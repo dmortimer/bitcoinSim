@@ -2,7 +2,6 @@ var express = require('express');
 var pool = require('./pg-connection-pool')
 var path = require('path');
 var bodyParser = require('body-parser');
-var pg = require('pg');
 var app = express();
 var port = process.env.PORT || 8080;
 
