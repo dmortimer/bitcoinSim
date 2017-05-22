@@ -16,7 +16,7 @@ app.factory('apiFactory', function ($http) {
   obj.getCurrentPrice = function () {
     return $http({
       method: 'GET',
-      url: 'http://api.coindesk.com/v1/bpi/currentprice.json'
+      url: 'https://api.coindesk.com/v1/bpi/currentprice.json'
     }).then(function (response) {
       currPrice = parseFloat(response.data.bpi.USD.rate.replace(',', ''));
       prevPrice = currPrice;
@@ -29,7 +29,7 @@ app.factory('apiFactory', function ($http) {
   obj.getHistoricalData = function () {
     return $http({
       method: 'GET',
-      url: 'http://api.coindesk.com/v1/bpi/historical/close.json?start=2010-07-17&end=2017-05-21'
+      url: 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2010-07-17&end=2017-05-21'
     }).then(function (response) {
       return response.data;
     }).catch(function (error) {
