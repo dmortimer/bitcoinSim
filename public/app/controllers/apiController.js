@@ -11,9 +11,16 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   $scope.getCurrentPrice();
   $interval(function () {
     $scope.getCurrentPrice();
-  }, 5000);
-  apiFactory.getHistoricalData().then(function (response) {
-    console.log('CoinDesk historical BPI data:');
-    console.log(response);
-  });
+  }, 20000);
+  $scope.getCurrentAssets = function () {
+    $scope.assets = apiFactory.getCurrentAssets();
+  }
+  $scope.getCurrentAssets();
+  $scope.buyCoin = function () {
+    $scope.assets = apiFactory.buyCoin();
+  };
+  // apiFactory.getHistoricalData().then(function (response) {
+  //   console.log('CoinDesk historical BPI data:');
+  //   console.log(response);
+  // });
 });

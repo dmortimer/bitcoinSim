@@ -1,0 +1,5 @@
+{
+"name": "Bitcoin Simulator",
+"description": "This app can give you practice buying and selling bitcoins",
+"image": "heroku/nodejs"
+}
