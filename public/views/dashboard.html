@@ -1,0 +1,8 @@
+<div class="row">
+  <h2 class="accN col-lg-12">Account Name</h2>
+  <h2 class="accV col-lg-12">Account Value</h2>
+      <p>Current Price: {{currentPrice | currency}}</p>
+      <p>Cash: {{assets[0] | currency}}</p>
+      <p>Coins: {{assets[1]}}</p>
+      <button type="button" ng-click="buyCoin()">Buy Coin</button>
+</div>
