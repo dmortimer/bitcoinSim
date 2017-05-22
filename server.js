@@ -1,12 +1,16 @@
 var express = require('express');
+var pool = require('./pg-connection-pool')
 var path = require('path');
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var app = express();
 var port = process.env.PORT || 8080;
-var pool = new pg.Pool;
 
 app.use(express.static(path.join(__dirname, '/public')));
+
+pool.query("SELECT * FROM coinData").then(function (result) {
+  console.log(result);
+});
 
 // app.get('/', function (req, res) {
 //   res.send('Bitcoin Simulator');
