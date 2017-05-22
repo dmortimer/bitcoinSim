@@ -6,6 +6,8 @@ body {
   text-align: center;
   float: left;
   color: black;
+  font-family: 'Source Sans Pro', sans-serif;
+
 }
 
 .logo {
@@ -15,7 +17,7 @@ body {
   padding: 10px;
 }
 /*Dashboard*/
-.accountN, .accountV {
+.accN, .acctV {
   display: inline;
 }
 
@@ -87,7 +89,7 @@ form {
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #1A1A1D;
+  background: #2196F3;
 }
 .form .message {
   margin: 15px 0 0;
