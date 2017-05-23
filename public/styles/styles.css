@@ -17,10 +17,17 @@ body {
   padding: 10px;
 }
 /*Dashboard*/
-.accN, .acctV {
+h2 {
   display: inline;
 }
 
+.name {
+  text-align: left;
+}
+
+.value {
+  text-align: right;
+}
 /*Nav Bar*/
 ul {
     list-style-type: none;
