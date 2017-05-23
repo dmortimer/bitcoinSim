@@ -7,13 +7,11 @@ var port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-pool.query("SELECT * FROM coinData").then(function (result) {
-  console.log(result);
+app.get('/api/history', function (req, res) {
+  pool.query("SELECT * FROM coinData").then(function (result) {
+    res.send(result.rows);
+  });
 });
-
-// app.get('/', function (req, res) {
-//   res.send('Bitcoin Simulator');
-// });
 
 app.listen(port, function () {
   console.log('Server listening on port ' + port);
