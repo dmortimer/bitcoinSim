@@ -29,12 +29,12 @@ app.factory('apiFactory', function ($http) {
   obj.getHistoricalData = function () {
     return $http({
       method: 'GET',
-      url: 'http://api.coindesk.com/v1/bpi/historical/close.json?start=2010-07-17&end=2017-05-21'
+      url: '/api/history'
     }).then(function (response) {
       return response.data;
     }).catch(function (error) {
       console.log(error);
-      return "Dummy Value for Now";
+      return "Issue retrieving historical data";
     });
   };
   return obj;
