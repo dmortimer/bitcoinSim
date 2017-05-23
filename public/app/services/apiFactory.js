@@ -13,6 +13,11 @@ app.factory('apiFactory', function ($http) {
     assets[1]++;
     return assets;
   };
+  obj.sellCoin = function () {
+    assets[0] += currPrice;
+    assets[1]--;
+    return assets;
+  };
   obj.getCurrentPrice = function () {
     return $http({
       method: 'GET',
