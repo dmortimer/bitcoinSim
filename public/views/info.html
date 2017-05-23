@@ -1,4 +1,6 @@
 <div ng-repeat="points in historicalData">
   <p>
+    {{ points.price_date | date }}
+    {{ points.price | currency }}
   </p>
 </div>
