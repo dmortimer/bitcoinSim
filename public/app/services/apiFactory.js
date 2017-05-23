@@ -31,6 +31,9 @@ app.factory('apiFactory', function ($http) {
       method: 'GET',
       url: '/api/history'
     }).then(function (response) {
+      response.data.forEach(function (item) {
+        item.price_date = new Date(item.price_date);
+      });
       return response.data;
     }).catch(function (error) {
       console.log(error);
