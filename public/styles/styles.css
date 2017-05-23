@@ -136,3 +136,25 @@ form {
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+
+/*dashboard */
+.db_cardTitle{
+  margin:2%;
+}
+.dbd_card{
+  position: relative;
+  margin: 0 2%;
+  background: #FFFFFF;
+  height:200px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.db_header{
+  background-color:rgb(247,147,26);
+  text-align: center;
+  height:70px;
+  color:white;
+  padding: 10px;
+  margin: 0;
+}
