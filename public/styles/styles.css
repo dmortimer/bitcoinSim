@@ -63,7 +63,7 @@ form {
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+.form input, .buy-form input{
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -74,7 +74,7 @@ form {
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form button, .buy-form button{
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -165,7 +165,8 @@ form {
   position: relative;
   margin: 0 2%;
   background: #FFFFFF;
-  height:200px;
+  height:auto;
+  min-height: 200px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .acct_graph{
