@@ -139,8 +139,27 @@ form {
 
 
 /*dashboard */
-.db_cardTitle{
+.db_header{
+  background-color:rgb(247,147,26);
+  text-align: center;
+  height:70px;
+  color:white;
+  padding: 10px;
+  margin: 0;
+}
+.db_card_hd{
   margin:2%;
+  text-align:left;
+}
+
+.db_card_hd h3{
+  font-size:120%;
+  font-weight: bold;
+  text-align:center;
+}
+.db_card_hd p{
+  padding-top:1%;
+  font-size: 120%;
 }
 .dbd_card{
   position: relative;
@@ -149,12 +168,25 @@ form {
   height:200px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+.acct_graph{
+  width:95%;
+  height:200px;
+  background-color:#0d579b;
+  margin:0 auto;
+}
 
-.db_header{
-  background-color:rgb(247,147,26);
-  text-align: center;
-  height:70px;
-  color:white;
-  padding: 10px;
-  margin: 0;
+#dbd_acct{
+  height:auto;
+  padding-bottom:5%;
+}
+
+#bcprice{
+  text-align:center;
+  color:#329239;
+}
+
+#date_posted{
+  font-size:70%;
+  font-style: italic;
+  text-align:right;
 }
