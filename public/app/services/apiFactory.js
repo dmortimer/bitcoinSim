@@ -3,19 +3,18 @@ var app = angular.module('coinMod');
 app.factory('apiFactory', function ($http) {
   var obj = {};
   var currPrice;
-  var prevPrice;
   var assets = [30000, 0];
   obj.getCurrentAssets = function () {
     return assets;
   };
-  obj.buyCoin = function () {
-    assets[0] -= currPrice;
-    assets[1]++;
+  obj.buyCoin = function (numBuy) {
+    assets[0] -= (currPrice * numBuy);
+    assets[1]+= numBuy;
     return assets;
   };
-  obj.sellCoin = function () {
-    assets[0] += currPrice;
-    assets[1]--;
+  obj.sellCoin = function (numSell) {
+    assets[0] += (currPrice * numSell);
+    assets[1] -= numSell;
     return assets;
   };
   obj.getCurrentPrice = function () {
@@ -24,11 +23,10 @@ app.factory('apiFactory', function ($http) {
       url: 'http://api.coindesk.com/v1/bpi/currentprice.json'
     }).then(function (response) {
       currPrice = parseFloat(response.data.bpi.USD.rate.replace(',', ''));
-      prevPrice = currPrice;
       return currPrice;
     }).catch(function (error) {
       console.log(error);
-      return prevPrice;
+      return currPrice;
     });
   };
   obj.getHistoricalData = function () {
