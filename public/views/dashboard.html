@@ -11,10 +11,13 @@
     <h3>Your Wallet</h3><hr>
     <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
     <p><strong>Bitcoins: </strong>{{assets[1] |currency}}</p>
+
     <form class="buy-form">
-      <input ng-model="numBuy" type="number" min="0" max="1000"placeholder="0" required="required"/>
+
+      <input ng-model="numBuy" type="number" min="1" max="20"placeholder="0" required="required" ng-minlength="1" ng-maxlength="20"/>
       <button class="btn" ng-click="buyCoin(numBuy)">Buy</button></form>
-      <input ng-model="numSell" type="number" min="0" max="1000"placeholder="0" required="required"/>
+
+      <input ng-model="numSell" type="number" min="1" max="20" placeholder="0" required="required" ng-minlength="1" ng-maxlength="20"/>
       <button class="btn" ng-click="sellCoin(numSell)">Sell</button></form>
   </div>
 </div>
