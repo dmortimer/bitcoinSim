@@ -1,1 +1,1 @@
-var app = angular.module('coinMod', ["ngRoute"]);
+var app = angular.module('coinMod', ["ngRoute", "ui.bootstrap"]);

@@ -8,26 +8,31 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       // console.log($scope.currentPrice);
     });
   };
-  $scope.getHistoricalData = function () {
-    apiFactory.getHistoricalData().then(function (response) {
-      $scope.historicalData = response;
-      // console.log('CoinDesk historical BPI data:');
-      // console.log(response);
-    });
-  };
   $scope.getCurrentPrice();
   $interval(function () {
     $scope.getCurrentPrice();
   }, 20000);
-  $scope.getHistoricalData();
   $scope.getCurrentAssets = function () {
     $scope.assets = apiFactory.getCurrentAssets();
+    console.log($scope.assets);
   }
   $scope.getCurrentAssets();
   $scope.buyCoin = function (numBuy) {
+    if(($scope.currentPrice * numBuy) < $scope.assets[0] ){
     $scope.assets = apiFactory.buyCoin(numBuy);
+  }
+    else {
+      alert ('Insufficient Funds');
+      return $scope.assets;
+    }
   };
   $scope.sellCoin = function (numSell) {
-    $scope.assets = apiFactory.sellCoin(numSell);
+    if (numSell <= $scope.assets[1] ){
+      $scope.assets = apiFactory.sellCoin(numSell);
+    }
+    else {
+      alert ('There are not enough coins in your wallet');
+      return $scope.assets;
+    }
   };
 });

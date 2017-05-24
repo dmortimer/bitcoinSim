@@ -17,10 +17,17 @@ body {
   padding: 10px;
 }
 /*Dashboard*/
-.accN, .acctV {
+h2 {
   display: inline;
 }
 
+.name {
+  text-align: left;
+}
+
+.value {
+  text-align: right;
+}
 /*Nav Bar*/
 nav{
     position:relative;
@@ -105,6 +112,7 @@ form {text-align: center;}
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  margin-bottom:10px;
 }
 .form button:hover,.form button:active,.form button:focus {
   background: #2196F3;
@@ -213,6 +221,21 @@ form {text-align: center;}
   text-align:right;
 }
 
+#exchange {
+  font-family: "Roboto", sans-serif;
+  /*text-transform: uppercase;*/
+  outline: 0;
+  background: green;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-bottom:10px;
+}
 
 /*VIEW: Sign In*/
 .banner{

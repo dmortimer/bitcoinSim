@@ -5,24 +5,25 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-
-<body ng-controller="apiController">
+  <body>
     <div class="row">
         <h1 class="header col-lg-12">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h1>
     </div>
 
     <nav class="navbar row">
-        <!-- <h2 class="xs-logo col-lg-4">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h2> -->
-        <ul class="col-lg-12">
-            <li><a href="#">{{currentPrice | currency:" USD | BTC $ "}}</a></li>
-            <li><a href="#!/">Dashboard</a></li>
-            <li><a href="#!/info">Price History</a></li>
-            <li><a href="#!/signin">Sign In</a></li>
-        </ul>
-    </nav>
+    <!-- <h2 class="xs-logo col-lg-4">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h2> -->
+      <ul class="col-lg-12">
+        <li><a href="#">{{currentPrice | currency:" USD | BTC $ "}}</a></li>
+        <li><a href="#!/">Dashboard</a></li>
+        <li><a href="#!/info">Historial Data</a></li>
+        <li><a href="#!/signin">Sign In</a></li>
+      </ul>
+  </nav>
+
     <ng-view></ng-view>
 
     <footer>
@@ -30,6 +31,7 @@
 
     <script type="text/javascript" charset="utf-8" src="app/lib/angular.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/lib/angular-route.min.js"></script>
+    <script charset="utf-8" src="app/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/app.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/services/apiFactory.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/routes.js"></script>
