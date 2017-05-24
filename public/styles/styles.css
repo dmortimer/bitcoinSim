@@ -286,15 +286,9 @@ form {text-align: center;}
   height:60px;
   width:60px;
 }
-.icon1{
-  background-image:url("http://www.betphoenix.ag/sites/all/themes/betphoenixten/images/internal-pages/bitcoin/icon-bitcoin-wallet.png");
-}
-.icon2{
-  background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/exchange.png");
-}
-.icon3{
-  background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/coins2.png");
-}
+.icon1{background-image:url("http://www.betphoenix.ag/sites/all/themes/betphoenixten/images/internal-pages/bitcoin/icon-bitcoin-wallet.png");}
+.icon2{background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/exchange.png");}
+.icon3{background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/coins2.png");}
 
 
 /*footer*/
