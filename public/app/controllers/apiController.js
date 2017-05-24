@@ -35,4 +35,5 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       return $scope.assets;
     }
   };
+
 });

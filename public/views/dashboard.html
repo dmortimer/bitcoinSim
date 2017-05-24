@@ -14,14 +14,13 @@
 
     <form class="buy-form" ng-submit="buyCoin(numBuy)">
       <input ng-model="numBuy" type="number" min="1" max="20" placeholder="0" required="required" ng-min="1" ng-max="20"/>
-      <button type="submit" id="exchange" class="btn">Buy</button>
+      <button type="submit" id="exchange" class="btn" onclick="clearForm()">Buy</button>
     </form>
 
     <form class="buy-form" ng-submit="sellCoin(numSell)">
       <input ng-model="numSell" type="number" min="1" max="20" placeholder="0" required="required" ng-min="1" ng-max="20"/>
       <button type="submit" id="exchange" class="btn">Sell</button>
     </form>
-
   </div>
 </div>
 
