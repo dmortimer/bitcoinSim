@@ -7,7 +7,8 @@ app.config(function($routeProvider){
     controller: 'apiController'
   })
   .when("/info",{
-    templateUrl: 'views/info.html'
+    templateUrl: 'views/info.html',
+    controller: 'hgraphController'
   })
   .when("/signin",{
     templateUrl: 'views/signin.html'
