@@ -221,7 +221,8 @@ form {text-align: center;}
   text-align:right;
 }
 
-#sell_button {
+
+#exchange {
   font-family: "Roboto", sans-serif;
   /*text-transform: uppercase;*/
   outline: 0;
