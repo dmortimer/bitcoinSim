@@ -9,14 +9,25 @@ app.factory('apiFactory', function ($http) {
     return assets;
   };
   obj.buyCoin = function () {
-    assets[0] -= currPrice;
-    assets[1]++;
-    return assets;
+    if (assets[0] > currPrice){
+      assets[0] -= currPrice;
+      assets[1] ++;
+      return assets;
+    }
+    else {
+    alert ("You don't have enough funds");
+    return assets;}
   };
   obj.sellCoin = function () {
+    if (assets[1] > 0){
     assets[0] += currPrice;
-    assets[1]--;
+    assets[1] --;
     return assets;
+    }
+    else {
+      alert ('You have 0 coins in your wallet');
+      return assets;
+    }
   };
   obj.getCurrentPrice = function () {
     return $http({

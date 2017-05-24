@@ -23,7 +23,7 @@ var lineChart = new Chart(ctx, {
     labels: $scope.hdate,
     datasets: [
         {
-            label: "Historical Bitcoin Data",
+            label: "Past Bitcoin Price",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",

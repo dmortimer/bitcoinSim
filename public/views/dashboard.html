@@ -12,7 +12,8 @@
     <p><strong>Bitcoins: </strong>{{assets[1] |currency}}</p>
     <form class="buy-form">
       <input type="number" min="0" max="10000"placeholder="$0.00 USD" required="required"/>
-      <button class="btn" ng-click="buyCoin()">Buy</button></form>
+      <button class="btn" ng-click="buyCoin(coin)">Buy</button>
+      <button id="sell_button" class="btn" ng-click="sellCoin(coin)">Sell</button></form>
   </div>
 </div>
 

@@ -8,18 +8,10 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       console.log($scope.currentPrice);
     });
   };
-  // $scope.getHistoricalData = function () {
-  //   apiFactory.getHistoricalData().then(function (response) {
-  //     $scope.historicalData = response;
-  //     console.log('CoinDesk historical BPI data:');
-  //     console.log(response);
-  //   });
-  // };
   $scope.getCurrentPrice();
   $interval(function () {
     $scope.getCurrentPrice();
   }, 20000);
-  // $scope.getHistoricalData();
   $scope.getCurrentAssets = function () {
     $scope.assets = apiFactory.getCurrentAssets();
   }

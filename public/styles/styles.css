@@ -94,6 +94,7 @@ form {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  margin-bottom:10px;
 }
 .form button:hover,.form button:active,.form button:focus {
   background: #2196F3;
@@ -197,4 +198,19 @@ form {
   font-size:70%;
   font-style: italic;
   text-align:right;
+}
+#sell_button {
+  font-family: "Roboto", sans-serif;
+  /*text-transform: uppercase;*/
+  outline: 0;
+  background: green;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-bottom:10px;
 }
