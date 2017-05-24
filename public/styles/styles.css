@@ -141,17 +141,20 @@ form {
 
 
 /*dashboard */
+.db-page{
+  background-color:#eff1f4;
+}
+
 .db_header{
-  background-color:rgb(247,147,26);
+  background-color:rgb(50,146,57);
   text-align: center;
   height:70px;
   color:white;
   padding: 10px;
-  margin: 0;
+  margin-top:-25px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.db_card_hd{
-  margin:2%;
-  text-align:left;
+.db_card_hd{margin:2%;text-align:left;
 }
 .db_card_hd h3{
   font-size:120%;
@@ -164,6 +167,7 @@ form {
 }
 .dbd_card{
   position: relative;
+  padding: 0 5% 5% 5%;
   margin: 0 2%;
   background: #FFFFFF;
   height:auto;
@@ -230,13 +234,23 @@ form {
 }
 
 .log-box{padding-left: 10%;}
+.log-box a:hover{color:#329239;text-decoration:none;}
 .log-row{padding:3%;}
 
 .l-icon{
-  background-color:#0d579b;
-  height:50px;
-  width:50px;
-  border-radius: 50%;
+  background-repeat:no-repeat;
+  background-size: contain;
+  height:60px;
+  width:60px;
+}
+.icon1{
+  background-image:url("http://www.betphoenix.ag/sites/all/themes/betphoenixten/images/internal-pages/bitcoin/icon-bitcoin-wallet.png");
+}
+.icon2{
+  background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/exchange.png");
+}
+.icon3{
+  background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/coins2.png");
 }
 
 
