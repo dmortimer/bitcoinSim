@@ -11,20 +11,20 @@
     <div class="row">
       <h1 class="header col-lg-12">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h1>
     </div>
-    <div class="row">
+
+    <nav class="navbar row">
+    <!-- <h2 class="xs-logo col-lg-4">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h2> -->
       <ul class="col-lg-12">
+        <li><a href="#">{{currentPrice | currency:" USD | BTC $ "}}</a></li>
         <li><a href="#!/">Dashboard</a></li>
         <li><a href="#!/info">Info</a></li>
         <li><a href="#!/signin">Sign In</a></li>
-        <li><a href="#">{{currentPrice | currency:" USD | BTC $ "}}</a></li>
-
- <!-- "USD | BTC : $ " + -->
-
-
       </ul>
-    </div>
+  </nav>
+
     <ng-view></ng-view>
-    <p>Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk<a></p>
+
+    <footer><p>Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk<a></p></footer>
 
     <script type="text/javascript" charset="utf-8" src="app/lib/angular.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/lib/angular-route.min.js"></script>

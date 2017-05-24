@@ -7,9 +7,9 @@ app.factory('apiFactory', function ($http) {
   obj.getCurrentAssets = function () {
     return assets;
   };
-  obj.buyCoin = function () {
-    assets[0] -= currPrice;
-    assets[1]++;
+  obj.buyCoin = function (valCoin) {
+    assets[0] -= (currPrice);
+    assets[1]+=(currPrice);
     return assets;
   };
   obj.sellCoin = function () {
