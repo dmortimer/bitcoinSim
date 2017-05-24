@@ -16,8 +16,8 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
          });
        });
      };
-var ctx = document.getElementById("line-chart");
-var lineChart = new Chart(ctx, {
+var ctx = document.getElementById("h-chart");
+var historicalChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: $scope.hdate,
