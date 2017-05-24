@@ -1,21 +1,98 @@
 var app = angular.module('coinMod');
-
+//"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+//[65, 59, 80, 81, 56, 55, 40]
 app.factory('apiFactory', function ($http) {
   var obj = {};
+  var historicalData;
+  var personalHistory = {dates: [], cash: [], coins: [], historical: [], values: []};
   var currPrice;
-  var assets = [30000, 0];
+  var testUser = {
+    username: 'testuser',
+    password: '12345',
+    startingCash: 30000,
+    startingCoins: 0,
+    assets: [30000, 0],
+    accountDate: new Date(2017, 0, 0, 8, 30, 32, 0),
+    history: [{date: new Date(2017, 0, 3, 8, 30, 32, 0), type: "buy", numCoins: 3, cash: 25000},
+              {date: new Date(2017, 0, 15, 8, 30, 32, 0), type: "sell", numCoins: 2, cash: 28500},
+              {date: new Date(2017, 2, 1, 8, 30, 32, 0), type: "buy", numCoins: 4, cash: 20000},
+              {date: new Date(2017, 2, 15, 8, 30, 32, 0), type: "sell", numCoins: 5, cash: 31000},
+              {date: new Date(2017, 3, 25, 8, 30, 32, 0), type: "buy", numCoins: 2, cash: 27000}]
+  };
+  obj.populatePersonalHistory = function () {
+    var firstDate = testUser.accountDate;
+    var lastDate = new Date();
+    var lastDate = new Date(lastDate.setDate(lastDate.getDate() - 2));
+    var currDate = firstDate;
+    while (currDate < lastDate) {
+      personalHistory.values.push(5);
+      personalHistory.dates.push(currDate);
+      currDate = new Date(currDate.setDate(currDate.getDate() + 1));
+    }
+    var findi = 0;
+    for (var i = 0; i < personalHistory.dates.length; i++) {
+      if (testUser.history.find(function (object) {
+        return personalHistory.dates[i].getTime() === object.date.getTime();
+      })) {
+        if (i === 0) {
+          personalHistory.cash.push(testUser.startingCash);
+        } else {
+          personalHistory.cash.push(testUser.history[findi].cash);
+          findi++;
+        }
+      } else {
+        if (i === 0) {
+          personalHistory.cash.push(testUser.startingCash);
+        } else {
+          personalHistory.cash.push(personalHistory.cash[personalHistory.cash.length -1]);
+        }
+      }
+    }
+    var findj = 0;
+    for (var i = 0; i < personalHistory.dates.length; i++) {
+      if (testUser.history.find(function (object) {
+        return personalHistory.dates[i].getTime() === object.date.getTime();
+      })) {
+        if (i === 0) {
+          personalHistory.coins.push(testUser.startingCoins);
+        } else {
+          personalHistory.coins.push(testUser.history[findj].numCoins);
+          findj++;
+        }
+      } else {
+        if (i === 0) {
+          personalHistory.coins.push(testUser.startingCoins);
+        } else {
+          personalHistory.coins.push(personalHistory.coins[personalHistory.coins.length -1]);
+        }
+      }
+    }
+  }
+  obj.populatePersonalHistory();
   obj.getCurrentAssets = function () {
-    return assets;
+    return testUser.assets;
+  };
+  obj.getPersonalHistoryDates = function () {
+    console.log(testUser.history);
+    console.log(historicalData);
+    return personalHistory.dates;
+  };
+  obj.getPersonalHistoryValues = function () {
+    console.log(testUser.history);
+    console.log(historicalData);
+    return personalHistory.coins;
   };
   obj.buyCoin = function (numBuy) {
-    assets[0] -= (currPrice * numBuy);
-    assets[1]+= numBuy;
-    return assets;
+    testUser.assets[0] -= (currPrice * numBuy);
+    testUser.assets[1]+= numBuy;
+    testUser.history.push({date: new Date(), type: "buy", numCoins: numBuy});
+    return testUser.assets;
   };
   obj.sellCoin = function (numSell) {
-    assets[0] += (currPrice * numSell);
-    assets[1] -= numSell;
-    return assets;
+    testUser.assets[0] += (currPrice * numSell);
+    testUser.assets[1] -= numSell;
+    testUser.history.push({date: new Date(), type: "sell", numCoins: numSell});
+    return testUser.assets;
   };
   obj.getCurrentPrice = function () {
     return $http({
@@ -37,6 +114,7 @@ app.factory('apiFactory', function ($http) {
       response.data.forEach(function (item) {
         item.price_date = new Date(item.price_date);
       });
+      historicalData = response.data;
       return response.data;
     }).catch(function (error) {
       console.log(error);
@@ -44,4 +122,4 @@ app.factory('apiFactory', function ($http) {
     });
   };
   return obj;
-})
+});

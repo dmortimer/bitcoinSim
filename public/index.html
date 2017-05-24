@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="coinMod">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
-  </head>
+</head>
   <body>
     <div class="row">
-      <h1 class="header col-lg-12">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h1>
+        <h1 class="header col-lg-12">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h1>
     </div>
 
     <nav class="navbar row">
@@ -25,17 +26,20 @@
 
     <ng-view></ng-view>
 
-    <footer><p>Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk<a></p></footer>
+    <footer>
+        <p>Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk<a></p></footer>
 
     <script type="text/javascript" charset="utf-8" src="app/lib/angular.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/lib/angular-route.min.js"></script>
     <script charset="utf-8" src="app/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/app.js"></script>
-    <script type="text/javascript" charset="utf-8" src="app/controllers/apiController.js"></script>
-    <script type="text/javascript" charset="utf-8" src="app/controllers/hgraphController.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js'></script>
     <script type="text/javascript" charset="utf-8" src="app/services/apiFactory.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/routes.js"></script>
+    <script type="text/javascript" charset="utf-8" src="app/controllers/apiController.js"></script>
+    <script type="text/javascript" charset="utf-8" src="app/controllers/hgraphController.js"></script>
+    <script type="text/javascript" charset="utf-8" src="app/controllers/usergraphController.js"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js'></script>
   </body>
 </html>
