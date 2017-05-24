@@ -4,9 +4,4 @@
     {{ points.price | currency }}
   </p>
 </div> -->
-<div fusioncharts
-      width="600"
-      height="400"
-      type="column2d"
-      dataSource="{{myDataSource}}" >
- </div>
+<div ng-controller="graphController"><canvas id="line-chart"></canvas></div>
