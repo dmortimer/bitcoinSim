@@ -10,15 +10,17 @@
   <div class="col-xs-6 dbd_card">
     <h3>Your Wallet</h3><hr>
     <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
-    <p><strong>Bitcoins: </strong>{{assets[1] |currency}}</p>
+    <p><strong>Bitcoins: </strong>{{assets[1] |currency:"฿"}}</p>
 
     <form class="buy-form" ng-submit="buyCoin(numBuy)">
       <input ng-model="numBuy" type="number" min="1" max="20" placeholder="0" required="required" ng-min="1" ng-max="20"/>
-      <button type="submit" id="sell_button" class="btn">Buy</button></form>
+      <button type="submit" id="sell_button" class="btn">Buy</button>
+    </form>
 
     <form class="buy-form" ng-submit="sellCoin(numSell)">
       <input ng-model="numSell" type="number" min="1" max="20" placeholder="0" required="required" ng-min="1" ng-max="20"/>
-      <button id="sell_button" class="btn" ng-click="sellCoin(numSell)">Sell</button></form>
+      <button id="sell_button" class="btn" ng-click="sellCoin(numSell)">Sell</button>
+    </form>
 
   </div>
 </div>
