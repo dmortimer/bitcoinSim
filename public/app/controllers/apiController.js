@@ -27,4 +27,7 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   $scope.buyCoin = function () {
     $scope.assets = apiFactory.buyCoin();
   };
+  $scope.sellCoin = function () {
+    $scope.assets = apiFactory.sellCoin();
+  };
 });

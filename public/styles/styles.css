@@ -70,7 +70,7 @@ form {
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+.form input, .buy-form input{
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -81,7 +81,7 @@ form {
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form button, .buy-form button{
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -142,4 +142,59 @@ form {
 }
 .container .info span .fa {
   color: #EF3B3A;
+}
+
+
+/*dashboard */
+.db_header{
+  background-color:rgb(247,147,26);
+  text-align: center;
+  height:70px;
+  color:white;
+  padding: 10px;
+  margin: 0;
+}
+.db_card_hd{
+  margin:2%;
+  text-align:left;
+}
+
+.db_card_hd h3{
+  font-size:120%;
+  font-weight: bold;
+  text-align:center;
+}
+.db_card_hd p{
+  padding-top:1%;
+  font-size: 120%;
+}
+.dbd_card{
+  position: relative;
+  margin: 0 2%;
+  background: #FFFFFF;
+  height:auto;
+  min-height: 200px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.acct_graph{
+  width:95%;
+  height:200px;
+  background-color:#0d579b;
+  margin:0 auto;
+}
+
+#dbd_acct{
+  height:auto;
+  padding-bottom:5%;
+}
+
+#bcprice{
+  text-align:center;
+  color:#329239;
+}
+
+#date_posted{
+  font-size:70%;
+  font-style: italic;
+  text-align:right;
 }

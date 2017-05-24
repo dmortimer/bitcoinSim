@@ -17,10 +17,16 @@
         <li><a href="#!/">Dashboard</a></li>
         <li><a href="#!/info">Historial Data</a></li>
         <li><a href="#!/signin">Sign In</a></li>
+        <li><a href="#">{{currentPrice | currency:" USD | BTC $ "}}</a></li>
+
+ <!-- "USD | BTC : $ " + -->
+
+
       </ul>
     </div>
     <ng-view></ng-view>
     <p>Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk<a></p>
+
     <script type="text/javascript" charset="utf-8" src="app/lib/angular.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/lib/angular-route.min.js"></script>
     <script charset="utf-8" src="app/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
