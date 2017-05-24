@@ -19,8 +19,8 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   $scope.buyCoin = function () {
     $scope.assets = apiFactory.buyCoin();
   };
-  // apiFactory.getHistoricalData().then(function (response) {
-  //   console.log('CoinDesk historical BPI data:');
-  //   console.log(response);
-  // });
+  apiFactory.getHistoricalData().then(function (response) {
+    console.log('CoinDesk historical BPI data:');
+    console.log(response);
+  });
 });

@@ -12,8 +12,9 @@
     <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
     <p><strong>Bitcoins: </strong>{{assets[1] |currency}}</p>
     <form class="buy-form">
-      <input id="valCoin" type="number" min="0" max="10000"placeholder="$0.00 USD" required="required"/>
+      <input ng-model="valCoin" type="number" min="0" max="1000"placeholder="$0.00 USD" required="required"/>
       <button class="btn" ng-click="buyCoin()">Buy</button></form>
+      <h4>Value: {{valCoin}}</h4>
   </div>
 </div>
 
