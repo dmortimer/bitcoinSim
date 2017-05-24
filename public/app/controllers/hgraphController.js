@@ -11,8 +11,8 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
       angular.forEach($scope.historicalData, function(point){
         $scope.hdate.push(point.price_date);
         $scope.hprice.push(point.price);
-        console.log($scope.hprice);
-        console.log($scope.hdate);
+        // console.log($scope.hprice);
+        // console.log($scope.hdate);
       });
     });
   };
@@ -23,7 +23,7 @@ var lineChart = new Chart(ctx, {
     labels: $scope.hdate,
     datasets: [
         {
-            label: "Past Bitcoin Price",
+            label: "Past Bitcoin Prices",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
