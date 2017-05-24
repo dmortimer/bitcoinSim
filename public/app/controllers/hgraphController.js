@@ -1,6 +1,6 @@
 var app = angular.module('coinMod');
 
-app.controller('graphController', function ($scope, $interval, apiFactory) {
+app.controller('hgraphController', function ($scope, $interval, apiFactory) {
   $scope.hprice=[];
   $scope.hdate=[];
   $scope.getHistoricalData = function () {
