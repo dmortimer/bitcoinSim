@@ -24,10 +24,10 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
     $scope.assets = apiFactory.getCurrentAssets();
   }
   $scope.getCurrentAssets();
-  $scope.buyCoin = function () {
-    $scope.assets = apiFactory.buyCoin();
+  $scope.buyCoin = function (numBuy) {
+    $scope.assets = apiFactory.buyCoin(numBuy);
   };
-  $scope.sellCoin = function () {
-    $scope.assets = apiFactory.sellCoin();
+  $scope.sellCoin = function (numSell) {
+    $scope.assets = apiFactory.sellCoin(numSell);
   };
 });
