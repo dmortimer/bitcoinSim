@@ -4,15 +4,15 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   $scope.getCurrentPrice = function () {
     apiFactory.getCurrentPrice().then(function (response) {
       $scope.currentPrice = response;
-      console.log('CoinDesk BPI real-time:');
-      console.log($scope.currentPrice);
+      // console.log('CoinDesk BPI real-time:');
+      // console.log($scope.currentPrice);
     });
   };
   $scope.getHistoricalData = function () {
     apiFactory.getHistoricalData().then(function (response) {
       $scope.historicalData = response;
-      console.log('CoinDesk historical BPI data:');
-      console.log(response);
+      // console.log('CoinDesk historical BPI data:');
+      // console.log(response);
     });
   };
   $scope.getCurrentPrice();

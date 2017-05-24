@@ -6,7 +6,7 @@ var ctx = document.getElementById("user-chart");
 var userChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: apiFactory.getPersonalHistoryDates(),
     datasets: [
         {
             label: "My First dataset",
@@ -27,7 +27,7 @@ var userChart = new Chart(ctx, {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: apiFactory.getPersonalHistoryValues(),
             spanGaps: false,
         }
     ]
