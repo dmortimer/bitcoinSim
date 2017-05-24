@@ -8,7 +8,7 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
       $scope.historicalData = response;
       console.log('CoinDesk historical BPI data:');
       console.log(response);
-      $scope.historicalData.forEach(function(point){
+      angular.forEach($scope.historicalData, function(point){
         $scope.hdate.push(point.price_date);
         $scope.hprice.push(point.price);
         console.log($scope.hprice);
