@@ -13,7 +13,11 @@
     <p><strong>Bitcoins: </strong>{{assets[1] |currency}}</p>
 
     <form class="buy-form">
-      <input ng-model="numBuy" type="number" min="1" max="20"placeholder="0" required="required" ng-minlength="1" ng-maxlength="20"/>
+
+      <input type="number" min="0" max="10000"placeholder="$0.00 USD" required="required"/>
+      <button class="btn" ng-click="buyCoin(coin)">Buy</button>
+      <button id="sell_button" class="btn" ng-click="sellCoin(coin)">Sell</button></form>
+      <input ng-model="numBuy" type="number" min="0" max="1000"placeholder="0" required="required"/>
       <button class="btn" ng-click="buyCoin(numBuy)">Buy</button></form>
 
       <input ng-model="numSell" type="number" min="1" max="20" placeholder="0" required="required" ng-minlength="1" ng-maxlength="20"/>
