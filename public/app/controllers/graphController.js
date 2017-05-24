@@ -1,18 +1,26 @@
 var app = angular.module('coinMod');
 
 app.controller('graphController', function ($scope, $interval, apiFactory) {
+  $scope.hprice=[];
+  $scope.hdate=[];
   $scope.getHistoricalData = function () {
     apiFactory.getHistoricalData().then(function (response) {
       $scope.historicalData = response;
       console.log('CoinDesk historical BPI data:');
       console.log(response);
+      $scope.historicalData.forEach(function(point){
+        $scope.hdate.push(point.price_date);
+        $scope.hprice.push(point.price);
+        console.log($scope.hprice);
+        console.log($scope.hdate);
+      });
     });
   };
 var ctx = document.getElementById("line-chart");
 var lineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: $scope.hdate,
     datasets: [
         {
             label: "My First dataset",
@@ -33,11 +41,11 @@ var lineChart = new Chart(ctx, {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: $scope.hprice,
             spanGaps: false,
         }
     ]
   }
 });
-
+$scope.getHistoricalData();
 });

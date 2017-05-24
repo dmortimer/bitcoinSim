@@ -11,8 +11,8 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   $scope.getHistoricalData = function () {
     apiFactory.getHistoricalData().then(function (response) {
       $scope.historicalData = response;
-      console.log('CoinDesk historical BPI data:');
-      console.log(response);
+      // console.log('CoinDesk historical BPI data:');
+      // console.log(response);
     });
   };
   $scope.getCurrentPrice();
