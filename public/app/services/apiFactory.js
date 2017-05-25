@@ -62,12 +62,10 @@ app.factory('apiFactory', function($http) {
 
         while (currDate < lastDate) {
             personalHistory.dates.push(currDate);
-            personalHistory.displayDates.push(Number(currDate.getMonth()+1) + "/" + Number(currDate.getDate()+1) + "/" + currDate.getFullYear());
             currDate = new Date(currDate.setDate(currDate.getDate() + 1));
+            personalHistory.displayDates.push(currDate.toISOString().substring(0,10));
         }
-        console.log(personalHistory.displayDates);
         var findi = 0;
-
         for (var i = 0; i < personalHistory.dates.length; i++) {
             if (testUser.history.find(function(object) {
                     return personalHistory.dates[i].getFullYear() === object.date.getFullYear() && personalHistory.dates[i].getMonth() === object.date.getMonth() && personalHistory.dates[i].getDate() === object.date.getDate();
@@ -115,7 +113,7 @@ app.factory('apiFactory', function($http) {
         return testUser.assets;
     };
     obj.getPersonalHistoryDates = function() {
-        return personalHistory.dates;
+        return personalHistory.displayDates;
     };
     obj.getPersonalHistoryValues = function() {
         return personalHistory.values;
