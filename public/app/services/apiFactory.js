@@ -7,6 +7,7 @@ app.factory('apiFactory', function($http) {
     var histSubArray = [];
     var personalHistory = {
         dates: [],
+        displayDates: [],
         cash: [],
         coins: [],
         historical: [],
@@ -22,31 +23,31 @@ app.factory('apiFactory', function($http) {
         accountDate: new Date(2017, 0, 0, 8, 30, 32, 0),
         history: [{
                 date: new Date(2017, 0, 3, 8, 30, 32, 0),
-                type: "buy",
+                coinChainge: 3,
                 numCoins: 3,
                 cash: 26944.5
             },
             {
                 date: new Date(2017, 0, 15, 8, 30, 32, 0),
-                type: "sell",
-                numCoins: 2,
+                coinChange: -2,
+                numCoins: 1,
                 cash: 28581.76
             },
             {
                 date: new Date(2017, 2, 1, 8, 30, 32, 0),
-                type: "buy",
-                numCoins: 4,
+                coinChange: 4,
+                numCoins: 5,
                 cash: 23538.08
             },
             {
                 date: new Date(2017, 2, 15, 8, 30, 32, 0),
-                type: "sell",
-                numCoins: 5,
+                coinChange: -5,
+                numCoins: 0,
                 cash: 29402.58
             },
             {
                 date: new Date(2017, 3, 25, 8, 30, 32, 0),
-                type: "buy",
+                coinChange: 2,
                 numCoins: 2,
                 cash: 26832.9
             }
@@ -61,9 +62,10 @@ app.factory('apiFactory', function($http) {
 
         while (currDate < lastDate) {
             personalHistory.dates.push(currDate);
+            personalHistory.displayDates.push(Number(currDate.getMonth()+1) + "/" + Number(currDate.getDate()+1) + "/" + currDate.getFullYear());
             currDate = new Date(currDate.setDate(currDate.getDate() + 1));
         }
-
+        console.log(personalHistory.displayDates);
         var findi = 0;
 
         for (var i = 0; i < personalHistory.dates.length; i++) {
