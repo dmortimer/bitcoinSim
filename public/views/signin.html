@@ -32,13 +32,15 @@
 <div class="modal_window" ng-show="logModal">
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="logModal=false"></div>
-    <form class="form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
+
+      <form class="form" ng-submit="">
+        <input type="text" placeholder="username" ng-model="users.username"/>
+        <input type="password" placeholder="password" ng-model="password"/>
+        <input type="text" placeholder="email address"  ng-model="email"/>
+        <button>create</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+      </form>
+
     </div>
   </div>
 <!-- End Modal Window -->
