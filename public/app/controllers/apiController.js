@@ -20,6 +20,7 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   $scope.buyCoin = function (numBuy) {
     if(($scope.currentPrice * numBuy) < $scope.assets[0] ){
     $scope.assets = apiFactory.buyCoin(numBuy);
+    $scope.buyModal=false;
   }
     else {
       alert ('Insufficient Funds');
@@ -29,10 +30,12 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   $scope.sellCoin = function (numSell) {
     if (numSell <= $scope.assets[1] ){
       $scope.assets = apiFactory.sellCoin(numSell);
+      $scope.sellModal=false;
     }
     else {
-      alert ('There are not enough coins in your wallet');
+      alert ('There is only ฿ ' + $scope.assets[1] + '.00 coins in your wallet');
       return $scope.assets;
     }
   };
+
 });

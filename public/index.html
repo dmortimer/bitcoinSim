@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-  <body>
+  <body ng-controller="apiController">
     <div class="row">
         <h1 class="header col-lg-12">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h1>
     </div>
@@ -17,7 +17,7 @@
     <nav class="navbar row">
     <!-- <h2 class="xs-logo col-lg-4">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h2> -->
       <ul class="col-lg-12">
-        <li><a href="#">{{currentPrice | currency:" USD | BTC $ "}}</a></li>
+        <li><a href="#">{{currentPrice | currency:" USD | BTC ฿ "}}</a></li>
         <li><a href="#!/">Dashboard</a></li>
         <li><a href="#!/info">Historial Data</a></li>
         <li><a href="#!/signin">Sign In</a></li>
@@ -38,7 +38,6 @@
     <script type="text/javascript" charset="utf-8" src="app/controllers/apiController.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/controllers/hgraphController.js"></script>
     <script type="text/javascript" charset="utf-8" src="app/controllers/usergraphController.js"></script>
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js'></script>
   </body>
