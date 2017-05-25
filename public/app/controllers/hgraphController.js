@@ -26,104 +26,100 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
           monthlyPrices.push($scope.historicalData[i].price);
           monthlyDates.push($scope.historicalData[i].price_date);
          }
-                  //  console.log($scope.weeklyPrices);
-                  //  console.log($scope.weeklyDates);
-                  //  console.log($scope.monthlyPrices);
-                  //  console.log($scope.monthlyDates);
+         var ctx = document.getElementById("h-chart");
+         var historicalChart = new Chart(ctx, {
+           type: 'line',
+           data: {
+             labels: hdate,
+             datasets: [
+                 {
+                     label: "Past Bitcoin Prices",
+                     fill: true,
+                     lineTension: 0.1,
+                     backgroundColor: "rgba(75,192,192,0.4)",
+                     borderColor: "rgba(75,192,192,1)",
+                     borderCapStyle: 'butt',
+                     borderDash: [],
+                     borderDashOffset: 0.0,
+                     borderJoinStyle: 'miter',
+                     pointBorderColor: "rgba(75,192,192,1)",
+                     pointBackgroundColor: "#fff",
+                     pointBorderWidth: 1,
+                     pointHoverRadius: 5,
+                     pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                     pointHoverBorderColor: "rgba(220,220,220,1)",
+                     pointHoverBorderWidth: 2,
+                     pointRadius: 1,
+                     pointHitRadius: 10,
+                     data: hprice,
+                     spanGaps: false
+                 }
+             ]
+           }
+         });
+         var chartM = document.getElementById("m-chart");
+         var mChart = new Chart(chartM, {
+           type: 'line',
+           data: {
+             labels: monthlyDates,
+             datasets: [
+                 {
+                     label: "Monthly Bitcoin Prices",
+                     fill: true,
+                     lineTension: 0.1,
+                     backgroundColor: "rgba(75,192,192,0.4)",
+                     borderColor: "rgba(75,192,192,1)",
+                     borderCapStyle: 'butt',
+                     borderDash: [],
+                     borderDashOffset: 0.0,
+                     borderJoinStyle: 'miter',
+                     pointBorderColor: "rgba(75,192,192,1)",
+                     pointBackgroundColor: "#fff",
+                     pointBorderWidth: 1,
+                     pointHoverRadius: 5,
+                     pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                     pointHoverBorderColor: "rgba(220,220,220,1)",
+                     pointHoverBorderWidth: 2,
+                     pointRadius: 1,
+                     pointHitRadius: 10,
+                     data: monthlyPrices,
+                     spanGaps: false
+                 }
+             ]
+           }
+         });
+         var chartW = document.getElementById("w-chart");
+         var wChart = new Chart(chartW, {
+           type: 'line',
+           data: {
+             labels: weeklyDates,
+             datasets: [
+                 {
+                     label: "Weekly Bitcoin Prices",
+                     fill: true,
+                     lineTension: 0.1,
+                     backgroundColor: "rgba(75,192,192,0.4)",
+                     borderColor: "rgba(75,192,192,1)",
+                     borderCapStyle: 'butt',
+                     borderDash: [],
+                     borderDashOffset: 0.0,
+                     borderJoinStyle: 'miter',
+                     pointBorderColor: "rgba(75,192,192,1)",
+                     pointBackgroundColor: "#fff",
+                     pointBorderWidth: 1,
+                     pointHoverRadius: 5,
+                     pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                     pointHoverBorderColor: "rgba(220,220,220,1)",
+                     pointHoverBorderWidth: 2,
+                     pointRadius: 1,
+                     pointHitRadius: 10,
+                     data: weeklyPrices,
+                     spanGaps: false
+                 }
+             ]
+           }
+         });
        });
      };
-      var ctx = document.getElementById("h-chart");
-      var historicalChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: hdate,
-          datasets: [
-              {
-                  label: "Past Bitcoin Prices",
-                  fill: true,
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(75,192,192,0.4)",
-                  borderColor: "rgba(75,192,192,1)",
-                  borderCapStyle: 'butt',
-                  borderDash: [],
-                  borderDashOffset: 0.0,
-                  borderJoinStyle: 'miter',
-                  pointBorderColor: "rgba(75,192,192,1)",
-                  pointBackgroundColor: "#fff",
-                  pointBorderWidth: 1,
-                  pointHoverRadius: 5,
-                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                  pointHoverBorderColor: "rgba(220,220,220,1)",
-                  pointHoverBorderWidth: 2,
-                  pointRadius: 1,
-                  pointHitRadius: 10,
-                  data: hprice,
-                  spanGaps: false
-              }
-          ]
-        }
-      });
-      var chartM = document.getElementById("m-chart");
-      var mChart = new Chart(chartM, {
-        type: 'line',
-        data: {
-          labels: monthlyDates,
-          datasets: [
-              {
-                  label: "Monthly Bitcoin Prices",
-                  fill: true,
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(75,192,192,0.4)",
-                  borderColor: "rgba(75,192,192,1)",
-                  borderCapStyle: 'butt',
-                  borderDash: [],
-                  borderDashOffset: 0.0,
-                  borderJoinStyle: 'miter',
-                  pointBorderColor: "rgba(75,192,192,1)",
-                  pointBackgroundColor: "#fff",
-                  pointBorderWidth: 1,
-                  pointHoverRadius: 5,
-                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                  pointHoverBorderColor: "rgba(220,220,220,1)",
-                  pointHoverBorderWidth: 2,
-                  pointRadius: 1,
-                  pointHitRadius: 10,
-                  data: monthlyPrices,
-                  spanGaps: false
-              }
-          ]
-        }
-      });
-      var chartW = document.getElementById("w-chart");
-      var wChart = new Chart(chartW, {
-        type: 'line',
-        data: {
-          labels: weeklyDates,
-          datasets: [
-              {
-                  label: "Weekly Bitcoin Prices",
-                  fill: true,
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(75,192,192,0.4)",
-                  borderColor: "rgba(75,192,192,1)",
-                  borderCapStyle: 'butt',
-                  borderDash: [],
-                  borderDashOffset: 0.0,
-                  borderJoinStyle: 'miter',
-                  pointBorderColor: "rgba(75,192,192,1)",
-                  pointBackgroundColor: "#fff",
-                  pointBorderWidth: 1,
-                  pointHoverRadius: 5,
-                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                  pointHoverBorderColor: "rgba(220,220,220,1)",
-                  pointHoverBorderWidth: 2,
-                  pointRadius: 1,
-                  pointHitRadius: 10,
-                  data: weeklyPrices,
-                  spanGaps: false
-              }
-          ]
-        }
-      });
-      $scope.getHistoricalData();
+      $scope.getHistoricalData()
 });
