@@ -73,11 +73,6 @@ form {text-align: center;}
 /*Log In*/
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.login-box {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
 .form {
   position: relative;
   z-index: 1;
@@ -293,3 +288,35 @@ form {text-align: center;}
 
 /*footer*/
 footer{height:60px;}
+
+.modal_window{
+  height:100%;
+  width:100%;
+  position:fixed;
+  background-color:rgba(0,0,0,0.85);
+  z-index:500;
+  margin:auto;
+  top: 0px;
+}
+
+.modal_body{
+  height:50%;
+  width:50%;
+  position:fixed;
+  color:white;
+  margin: 20% 25%;
+  overflow:visible;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.glyphicon-remove{
+  font-size:200%;
+  padding:2%;
+  text-align:right;
+  display:block;
+  clear:both;
+}
+.glyphicon:hover{
+  color:#329239;
+  font-size:250%;
+}

@@ -1,5 +1,21 @@
-<div class="banner">
+<!-- Modal Window -->
+<div class="modal_window" ng-show="showme">
+    <div class="modal_body">
+      <div class="glyphicon glyphicon-remove"></div>
+<!-- sign-in -->
+    <form class="register-form form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+<!-- sign-in -->
+    </div>
+  </div>
+<!-- End Modal Window -->
 
+<div class="banner">
 <div class="landing_box row">
   <div class="col-xs-6 l-box1">
     <h1>Welcome to <br><span>Bitcoin</span></h1>
@@ -27,22 +43,4 @@
       </div>
     </div>
 </div>
-</div>
-
-<div ng-show="showme" class="login-box">
-  <!-- <div class="login-box"> -->
-  <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button class="btn">login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
 </div>
