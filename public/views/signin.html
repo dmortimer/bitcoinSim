@@ -1,31 +1,14 @@
-<!-- Modal Window -->
-<div class="modal_window" ng-show="showme">
-    <div class="modal_body">
-      <div class="glyphicon glyphicon-remove"></div>
-<!-- sign-in -->
-    <form class="register-form form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
-<!-- sign-in -->
-    </div>
-  </div>
-<!-- End Modal Window -->
-
 <div class="banner">
 <div class="landing_box row">
   <div class="col-xs-6 l-box1">
     <h1>Welcome to <br><span>Bitcoin</span></h1>
     <p><span>Bitcoin</span> is a cryptocurrency and a digital payment system released as open-source software in 2009. <span>Bitcoin</span> is a peer-to-peer system where transactions take place between users directly, without an intermediary. Since the system works without a central repository or single administrator, bitcoin is called the first decentralized digital currency.</p>
-    <a href="views/info.html"><div class="lrn-link">Learn More</div></a>
+    <a href="https://en.wikipedia.org/wiki/Bitcoin"><div class="lrn-link">Learn More</div></a>
   </div>
 
   <div class="log-box col-xs-6 row">
     <div class="row">
-      <h2><strong><a href="" ng-click="showme=true" >Log-in</a> or <a href="#">Sign-up</a></strong></h2><br>
+      <h2><strong><a href="" ng-click="logModal=true" >Log-in</a> or <a href="#">Sign-up</a></strong></h2><br>
       <h4>Experience a simulation with your own <span>Bitcoins</span></h4>
     </div>
 
@@ -44,3 +27,18 @@
     </div>
 </div>
 </div>
+
+<!-- Sign-In Modal Window -->
+<div class="modal_window" ng-show="logModal">
+    <div class="modal_body">
+      <div class="glyphicon glyphicon-remove" ng-click="logModal=false"></div>
+    <form class="form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+    </div>
+  </div>
+<!-- End Modal Window -->

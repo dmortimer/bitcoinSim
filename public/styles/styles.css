@@ -78,10 +78,10 @@ form {text-align: center;}
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
+  min-width: 300px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input, .buy-form input{
   font-family: "Roboto", sans-serif;
@@ -122,9 +122,9 @@ form {text-align: center;}
   color: #2196F3;
   text-decoration: none;
 }
-.form .register-form {
+/*.form .register-form {
   display: none;
-}
+}*/
 .container {
   position: relative;
   z-index: 1;
@@ -217,9 +217,8 @@ form {text-align: center;}
 }
 
 
-#exchange {
+/*#exchange {
   font-family: "Roboto", sans-serif;
-  /*text-transform: uppercase;*/
   outline: 0;
   background: green;
   width: 100%;
@@ -231,7 +230,7 @@ form {text-align: center;}
   transition: all 0.3 ease;
   cursor: pointer;
   margin-bottom:10px;
-}
+}*/
 
 
 /*VIEW: Sign In*/
@@ -298,25 +297,27 @@ footer{height:60px;}
   margin:auto;
   top: 0px;
 }
-
 .modal_body{
   height:50%;
   width:50%;
+  min-width: 300px;
   position:fixed;
-  color:white;
   margin: 20% 25%;
   overflow:visible;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
 .glyphicon-remove{
   font-size:200%;
+  color:white;
   padding:2%;
   text-align:right;
   display:block;
   clear:both;
 }
-.glyphicon:hover{
-  color:#329239;
-  font-size:250%;
+.glyphicon:hover{color:#329239;}
+
+.buySellModal input, .buySellModal .message{
+  margin:0;
+  text-align:right;
 }
+.buySellModal{padding-top: 10px;}
+.buySellModal h3{font-weight: bold;}
