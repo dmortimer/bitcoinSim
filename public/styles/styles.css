@@ -122,6 +122,10 @@ button:hover, .lrn-link:hover{
   font-weight: bold;
   text-decoration: none;
 }
+li a:hover, li a:active, li a:focus{
+  color:#f7931a;
+  text-decoration:none;
+}
 
 .form button:hover,.form button:active,.form button:focus {
   background: #2196F3;
