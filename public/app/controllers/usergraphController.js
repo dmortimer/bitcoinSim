@@ -2,6 +2,7 @@ var app = angular.module('coinMod');
 
 app.controller('usergraphController', function ($scope, $interval, apiFactory) {
 
+
 var ctx = document.getElementById("user-chart");
 var userChart = new Chart(ctx, {
   type: 'line',
@@ -9,7 +10,7 @@ var userChart = new Chart(ctx, {
     labels: apiFactory.getPersonalHistoryDates(),
     datasets: [
         {
-            label: "My First dataset",
+            label: "Account Value History",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
@@ -29,6 +30,8 @@ var userChart = new Chart(ctx, {
             pointHitRadius: 10,
             data: apiFactory.getPersonalHistoryValues(),
             spanGaps: false,
+            scaleStartValue:0,
+            scaleOvverride: true
         }
     ]
   }
