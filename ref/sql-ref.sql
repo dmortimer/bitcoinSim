@@ -2506,3 +2506,4 @@ INSERT INTO coinData (price_date, price) VALUES('2017-05-20', 2051.735);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-21', 2055.6175);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-22', 2139.0275);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-23', 2291.4775);
+INSERT INTO coinData (price_date, price) VALUES('2017-05-24', 2476.2963);
