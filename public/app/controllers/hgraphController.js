@@ -15,10 +15,10 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
          angular.forEach($scope.historicalData, function(point){
            hdate.push(point.price_date);
            hprice.push(point.price);
-        //    console.log($scope.hprice);
-        //    console.log($scope.hdate);
+        //    console.log(hprice);
+        //    console.log(hdate);
          });
-         for (var i = 1; i <= $scope.historicalData.length; i = i+7){
+         for (var i = 1000; i <= $scope.historicalData.length; i = i+7){
           weeklyPrices.push($scope.historicalData[i].price);
           weeklyDates.push($scope.historicalData[i].price_date);
          }
@@ -33,7 +33,7 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
              labels: hdate,
              datasets: [
                  {
-                     label: "Past Bitcoin Prices",
+                     label: "Bitcoin Prices since 2010",
                      fill: true,
                      lineTension: 0.1,
                      backgroundColor: "rgba(75,192,192,0.4)",
