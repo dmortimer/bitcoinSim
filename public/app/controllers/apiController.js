@@ -33,7 +33,7 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       $scope.sellModal=false;
     }
     else {
-      alert ('There is ฿ ' + $scope.assets[1] + '.00 coins in your wallet');
+      alert ('There is only ฿ ' + $scope.assets[1] + '.00 coins in your wallet');
       return $scope.assets;
     }
   };

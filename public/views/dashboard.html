@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 
 
 <!-- Sell Modal Window -->
@@ -40,8 +40,8 @@
       <div class="glyphicon glyphicon-remove" ng-click="sellModal=false"></div>
       <form class="form buySellModal" ng-submit="sellCoin(numSell)">
         <h3>Sell Bitcoins</h3><hr>
-        <h4>How many Bitcoins would you like to sell?</h4><br>
-        <input ng-model="numSell" type="number" min="1" max="15" placeholder="0" required="required" ng-min="1" ng-max="15}"/>
+        <h4>How many Bitcoins would <br>you like to sell?</h4><br>
+        <input ng-model="numSell" type="number" min="1" max="15" placeholder="0" required="required" ng-min="1" ng-max="15"/>
         <p class="message">* maximum is {{assets[1] |currency:"฿ "}} in account</p><br>
         <button type="submit">Sell</button>
       </form>
