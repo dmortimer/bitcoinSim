@@ -51,9 +51,13 @@ app.factory('apiFactory', function($http) {
             coins: [],
             historical: [],
             values: []
+        },
+        populateAssets: function () {
+          this.assets[0] = this.transactions[this.transactions.length - 1].cash;
+          this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
         }
     };
-
+    user.populateAssets();
     obj.populatePersonalHistory = function() {
         var firstDate = user.accountDate;
         var lastDate = new Date();
@@ -119,24 +123,25 @@ app.factory('apiFactory', function($http) {
         return user.personalHistory.values;
     };
     obj.buyCoin = function(numBuy) {
-        user.assets[0] -= (currPrice * numBuy);
-        user.assets[1] += numBuy;
         user.transactions.push({
-            date: new Date(),
-            coinChange: numBuy,
-            numCoins: 2,
-            cash: 26832.9
+          date: new Date(),
+          coinChange: numBuy,
+          numCoins: user.transactions[user.transactions.length - 1].numCoins + numBuy,
+          cash: user.transactions[user.transactions.length - 1].cash - (numBuy * currPrice)
         });
+        user.populateAssets();
+        console.log(user.transactions);
         return user.assets;
     };
     obj.sellCoin = function(numSell) {
-        user.assets[0] += (currPrice * numSell);
-        user.assets[1] -= numSell;
         user.transactions.push({
-            date: new Date(),
-            type: "sell",
-            numCoins: numSell
+          date: new Date(),
+          coinChange: -numSell,
+          numCoins: user.transactions[user.transactions.length - 1].numCoins - numSell,
+          cash: user.transactions[user.transactions.length - 1].cash + (numSell * currPrice)
         });
+        user.populateAssets();
+        console.log(user.transactions);
         return user.assets;
     };
     obj.getCurrentPrice = function() {
