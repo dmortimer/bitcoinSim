@@ -11,7 +11,8 @@ app.config(function($routeProvider){
     controller: 'hgraphController'
   })
   .when("/signin",{
-    templateUrl: 'views/signin.html'
+    templateUrl: 'views/signin.html',
+    controller: 'apiController'
   });
 
 });
