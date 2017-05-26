@@ -339,3 +339,7 @@ footer{height:60px;}
 }
 .buySellModal{padding-top: 10px;}
 .buySellModal h3{font-weight: bold;}
+
+.chartHeader{
+  text-align: center;
+}
