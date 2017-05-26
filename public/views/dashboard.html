@@ -45,12 +45,10 @@
                   <input ng-model="numBuy" type="number" min="" max="15" placeholder="0" required="required" ng-min="" ng-max="15" step="0.0001"/>
                   <p class="message"></p><br>
                 </div>
-
                 <button type="submit">Buy</button>
               </form>
             </div>
           </div>
-
 
           <div class="modal_window" ng-show="sellModal">
               <div class="modal_body">
@@ -58,7 +56,7 @@
                 <form class="form buySellModal" ng-submit="sellCoin(numSell)">
                   <h3>Sell Bitcoins</h3><hr>
                   <h4>How many Bitcoins would <br>you like to sell?</h4><br>
-                  <input ng-model="numSell" type="number" placeholder="0" required="required" ng-min="" ng-max="" step=".00000001"/>
+                  <input ng-model="numSell" type="number" placeholder="0" required="required" max="" ng-min="0" ng-max="" step=".0001"/>
                   <p class="message">* maximum is {{assets[1] |currency:"฿ "}} in account</p><br>
                   <button type="submit">Sell</button>
                 </form>
