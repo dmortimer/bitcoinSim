@@ -24,8 +24,8 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
          angular.forEach($scope.historicalData, function(point){
            hdate.push(point.price_date.toISOString().substring(0,10));
            hprice.push(point.price);
-        //    console.log($scope.hprice);
-        //    console.log($scope.hdate);
+        //    console.log(hprice);
+        //    console.log(hdate);
          });
          var weekIndex = $scope.historicalData.findIndex(function(object) {
            return weekBack.getFullYear() === object.price_date.getFullYear() && weekBack.getMonth() === object.price_date.getMonth() && weekBack.getDate() === object.price_date.getDate();
@@ -55,7 +55,7 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
              labels: hdate,
              datasets: [
                  {
-                     label: "Past Bitcoin Prices",
+                     label: "Bitcoin Prices since 2010",
                      fill: true,
                      lineTension: 0.1,
                      backgroundColor: "rgba(75,192,192,0.4)",
@@ -174,5 +174,5 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
          });
        });
      };
-      $scope.getHistoricalData()
+      $scope.getHistoricalData();
 });
