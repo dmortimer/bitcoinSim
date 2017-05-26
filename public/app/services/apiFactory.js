@@ -13,7 +13,14 @@ app.factory('apiFactory', function($http) {
         startingCoins: 0,
         assets: [],
         accountDate: new Date(2017, 0, 0, 8, 30, 32, 0),
-        transactions: [{
+        transactions: [
+            {
+              date: new Date(2017, 0, 1, 9, 30, 32, 0),
+              coinChainge: 0,
+              numCoins: 0,
+              cash: 30000
+            },
+            {
                 date: new Date(2017, 0, 3, 8, 30, 32, 0),
                 coinChainge: 3,
                 numCoins: 3,
@@ -53,8 +60,13 @@ app.factory('apiFactory', function($http) {
             values: []
         },
         populateAssets: function () {
-          this.assets[0] = this.transactions[this.transactions.length - 1].cash;
-          this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
+          if (user.transactions.length === 0) {
+            this.assets[0] = this.startingCash;
+            this.assets[1] = this.startingCoins;
+          } else {
+            this.assets[0] = this.transactions[this.transactions.length - 1].cash;
+            this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
+          }
         }
     };
     user.populateAssets();
@@ -74,18 +86,10 @@ app.factory('apiFactory', function($http) {
             if (user.transactions.find(function(object) {
                     return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
                 })) {
-                if (i === 0) {
-                    user.personalHistory.cash.push(user.startingCash);
-                } else {
-                    user.personalHistory.cash.push(user.transactions[findi].cash);
-                    findi++;
-                }
+                user.personalHistory.cash.push(user.transactions[findi].cash);
+                findi++;
             } else {
-                if (i === 0) {
-                    user.personalHistory.cash.push(user.startingCash);
-                } else {
-                    user.personalHistory.cash.push(user.personalHistory.cash[user.personalHistory.cash.length - 1]);
-                }
+                user.personalHistory.cash.push(user.personalHistory.cash[user.personalHistory.cash.length - 1]);
             }
         }
 
@@ -95,18 +99,10 @@ app.factory('apiFactory', function($http) {
             if (user.transactions.find(function(object) {
                     return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
                 })) {
-                if (i === 0) {
-                    user.personalHistory.coins.push(user.startingCoins);
-                } else {
-                    user.personalHistory.coins.push(user.transactions[findj].numCoins);
-                    findj++;
-                }
+                user.personalHistory.coins.push(user.transactions[findj].numCoins);
+                findj++;
             } else {
-                if (i === 0) {
-                    user.personalHistory.coins.push(user.startingCoins);
-                } else {
-                    user.personalHistory.coins.push(user.personalHistory.coins[user.personalHistory.coins.length - 1]);
-                }
+                user.personalHistory.coins.push(user.personalHistory.coins[user.personalHistory.coins.length - 1]);
             }
         }
     };
@@ -183,5 +179,6 @@ app.factory('apiFactory', function($http) {
             return "Issue retrieving historical data";
         });
     };
+    console.log(user.transactions);
     return obj;
 });
