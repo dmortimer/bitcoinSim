@@ -14,6 +14,7 @@ app.factory('apiFactory', function($http) {
         assets: [],
         accountDate: new Date(2017, 0, 0, 8, 30, 32, 0),
         transactions: [
+          //note that all transaction dates need to have an added 1 day to compensate for timezone BS
             {
               date: new Date(2017, 0, 1, 9, 30, 32, 0),
               coinChainge: 0,
@@ -21,31 +22,31 @@ app.factory('apiFactory', function($http) {
               cash: 30000
             },
             {
-                date: new Date(2017, 0, 3, 8, 30, 32, 0),
+                date: new Date(2017, 0, 4, 8, 30, 32, 0),
                 coinChainge: 3,
                 numCoins: 3,
                 cash: 26944.5
             },
             {
-                date: new Date(2017, 0, 15, 8, 30, 32, 0),
+                date: new Date(2017, 0, 16, 8, 30, 32, 0),
                 coinChange: -2,
                 numCoins: 1,
                 cash: 28581.76
             },
             {
-                date: new Date(2017, 2, 1, 8, 30, 32, 0),
+                date: new Date(2017, 2, 2, 8, 30, 32, 0),
                 coinChange: 4,
                 numCoins: 5,
                 cash: 23538.08
             },
             {
-                date: new Date(2017, 2, 15, 8, 30, 32, 0),
+                date: new Date(2017, 2, 17, 8, 30, 32, 0),
                 coinChange: -5,
                 numCoins: 0,
                 cash: 29402.58
             },
             {
-                date: new Date(2017, 3, 25, 8, 30, 32, 0),
+                date: new Date(2017, 3, 26, 8, 30, 32, 0),
                 coinChange: 2,
                 numCoins: 2,
                 cash: 26832.9
@@ -84,6 +85,8 @@ app.factory('apiFactory', function($http) {
         var findi = 0;
         for (var i = 0; i < user.personalHistory.dates.length; i++) {
             if (user.transactions.find(function(object) {
+                    console.log(user.personalHistory.dates[i]);
+                    console.log(object.date);
                     return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
                 })) {
                 user.personalHistory.cash.push(user.transactions[findi].cash);
@@ -171,7 +174,6 @@ app.factory('apiFactory', function($http) {
             for(var i = 0; i < user.personalHistory.dates.length; i++){
                 user.personalHistory.values.push((user.personalHistory.coins[i] * user.personalHistory.historical[i]) + user.personalHistory.cash[i])
             };
-            console.log(user.personalHistory);
 
             return response.data;
         }).catch(function(error) {
@@ -180,5 +182,8 @@ app.factory('apiFactory', function($http) {
         });
     };
     console.log(user.transactions);
+    console.log(user.personalHistory);
     return obj;
 });
+//days with transactions are based off curr price variables that will be stored in the transaction object
+//days without transactions will use  daily historical average from database
