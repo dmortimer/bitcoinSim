@@ -15,42 +15,76 @@ app.factory('apiFactory', function($http) {
         accountDate: new Date(2017, 0, 0, 8, 30, 32, 0),
         transactions: [
           //note that all transaction dates need to have an added 1 day to compensate for timezone BS
-            {
-              date: new Date(2017, 0, 1, 9, 30, 32, 0),
-              coinChainge: 0,
+          {
+            date: new Date(2017, 0, 1, 9, 30, 32, 0),
+            coinChainge: 0,
+            numCoins: 0,
+            price: 997.6888,
+            cash: 30000
+          },
+          {
+              date: new Date(2017, 0, 1, 9, 33, 32, 0),
+              coinChainge: 3,
+              numCoins: 3,
+              price: 997.6888,
+              cash: 27006.9336
+          },
+          {
+              date: new Date(2017, 0, 1, 10, 30, 32, 0),
+              coinChange: -2,
+              numCoins: 1,
+              price: 997.6888,
+              cash: 29002.3112
+          },
+          {
+              date: new Date(2017, 2, 2, 8, 30, 32, 0),
+              coinChange: 4,
+              numCoins: 5,
+              price: 1260.924,
+              cash: 23958.6152
+          },
+          {
+              date: new Date(2017, 2, 2, 8, 30, 33, 0),
+              coinChange: -5,
               numCoins: 0,
-              cash: 30000
-            },
-            {
-                date: new Date(2017, 0, 4, 8, 30, 32, 0),
-                coinChainge: 3,
-                numCoins: 3,
-                cash: 26944.5
-            },
-            {
-                date: new Date(2017, 0, 16, 8, 30, 32, 0),
-                coinChange: -2,
-                numCoins: 1,
-                cash: 28581.76
-            },
-            {
-                date: new Date(2017, 2, 2, 8, 30, 32, 0),
-                coinChange: 4,
-                numCoins: 5,
-                cash: 23538.08
-            },
-            {
-                date: new Date(2017, 2, 17, 8, 30, 32, 0),
-                coinChange: -5,
-                numCoins: 0,
-                cash: 29402.58
-            },
-            {
-                date: new Date(2017, 3, 26, 8, 30, 32, 0),
-                coinChange: 2,
-                numCoins: 2,
-                cash: 26832.9
-            }
+              price: 1260.924,
+              cash: 30263.2352
+          },
+          {
+              date: new Date(2017, 3, 26, 8, 30, 32, 0),
+              coinChange: 2,
+              numCoins: 2,
+              price: 1284.845,
+              cash: 27693.5452
+          },
+          {
+              date: new Date(2017, 3, 27, 8, 30, 32, 0),
+              coinChange: 2,
+              numCoins: 4,
+              price: 1329.19,
+              cash: 25035.1652
+          },
+          {
+              date: new Date(2017, 3, 27, 8, 30, 40, 0),
+              coinChange: -2,
+              numCoins: 2,
+              price: 1329.19,
+              cash: 27693.5452
+          },
+          {
+              date: new Date(2017, 3, 27, 8, 30, 45, 0),
+              coinChange: -2,
+              numCoins: 0,
+              price: 1329.19,
+              cash: 30351.9252
+          },
+          {
+              date: new Date(2017, 3, 27, 8, 30, 59, 0),
+              coinChange: 10,
+              numCoins: 10,
+              price: 1329.19,
+              cash: 17060.0252
+          }
         ],
         personalHistory: {
             dates: [],
@@ -61,13 +95,8 @@ app.factory('apiFactory', function($http) {
             values: []
         },
         populateAssets: function () {
-          if (user.transactions.length === 0) {
-            this.assets[0] = this.startingCash;
-            this.assets[1] = this.startingCoins;
-          } else {
-            this.assets[0] = this.transactions[this.transactions.length - 1].cash;
-            this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
-          }
+          this.assets[0] = this.transactions[this.transactions.length - 1].cash;
+          this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
         }
     };
     user.populateAssets();
@@ -82,31 +111,44 @@ app.factory('apiFactory', function($http) {
             currDate = new Date(currDate.setDate(currDate.getDate() + 1));
             user.personalHistory.displayDates.push(currDate.toISOString().substring(0,10));
         }
-        var findi = 0;
         for (var i = 0; i < user.personalHistory.dates.length; i++) {
-            if (user.transactions.find(function(object) {
-                    console.log(user.personalHistory.dates[i]);
-                    console.log(object.date);
-                    return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
-                })) {
-                user.personalHistory.cash.push(user.transactions[findi].cash);
-                findi++;
-            } else {
-                user.personalHistory.cash.push(user.personalHistory.cash[user.personalHistory.cash.length - 1]);
-            }
+          var tempArray = user.transactions.slice();
+          var tempHolder = [];
+          var tempObj;
+          if (tempArray.find(function(object) {
+            return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
+              })) {
+                while (tempArray.find(function(object) {
+                  tempObj = object;
+                  return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
+                    })) {
+                      tempHolder.push(tempObj);
+                      tempArray.splice(tempArray.indexOf(tempObj), 1);
+                }
+              user.personalHistory.cash.push(tempHolder[tempHolder.length - 1].cash);
+          } else {
+            user.personalHistory.cash.push(user.personalHistory.cash[user.personalHistory.cash.length - 1]);
+          }
         }
 
-        var findj = 0;
-
         for (var i = 0; i < user.personalHistory.dates.length; i++) {
-            if (user.transactions.find(function(object) {
-                    return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
-                })) {
-                user.personalHistory.coins.push(user.transactions[findj].numCoins);
-                findj++;
-            } else {
-                user.personalHistory.coins.push(user.personalHistory.coins[user.personalHistory.coins.length - 1]);
-            }
+          var tempArray = user.transactions.slice();
+          var tempHolder = [];
+          var tempObj;
+          if (tempArray.find(function(object) {
+            return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
+              })) {
+                while (tempArray.find(function(object) {
+                  tempObj = object;
+                  return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
+                    })) {
+                      tempHolder.push(tempObj);
+                      tempArray.splice(tempArray.indexOf(tempObj), 1);
+                }
+              user.personalHistory.coins.push(tempHolder[tempHolder.length - 1].numCoins);
+          } else {
+            user.personalHistory.coins.push(user.personalHistory.coins[user.personalHistory.coins.length - 1]);
+          }
         }
     };
 
@@ -129,7 +171,6 @@ app.factory('apiFactory', function($http) {
           cash: user.transactions[user.transactions.length - 1].cash - (numBuy * currPrice)
         });
         user.populateAssets();
-        console.log(user.transactions);
         return user.assets;
     };
     obj.sellCoin = function(numSell) {
@@ -140,7 +181,6 @@ app.factory('apiFactory', function($http) {
           cash: user.transactions[user.transactions.length - 1].cash + (numSell * currPrice)
         });
         user.populateAssets();
-        console.log(user.transactions);
         return user.assets;
     };
     obj.getCurrentPrice = function() {
@@ -165,14 +205,33 @@ app.factory('apiFactory', function($http) {
             });
             historicalData = response.data;
             histSubArray= historicalData.slice(historicalData.findIndex(function(object){
-
                 return user.accountDate.getFullYear() === object.price_date.getFullYear() && user.accountDate.getMonth() === object.price_date.getMonth() && user.accountDate.getDate() === object.price_date.getDate();
             }));
-            histSubArray.forEach(function(object){
-                user.personalHistory.historical.push(object.price)
-            });
+            console.log(histSubArray);
+            for (var i = 0; i < user.personalHistory.dates.length; i++) {
+              var tempArray = user.transactions.slice();
+              var tempHolder = [];
+              var tempObj;
+              if (tempArray.find(function(object) {
+                return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
+                  })) {
+                    while (tempArray.find(function(object) {
+                      tempObj = object;
+                      return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
+                        })) {
+                          tempHolder.push(tempObj);
+                          tempArray.splice(tempArray.indexOf(tempObj), 1);
+                    }
+                  user.personalHistory.historical.push(tempHolder[tempHolder.length - 1].price);
+              } else {
+                var histRecord = histSubArray.find(function(object) {
+                  return user.personalHistory.dates[i].getFullYear() === object.price_date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.price_date.getMonth() && user.personalHistory.dates[i].getDate() === object.price_date.getDate();
+                });
+                user.personalHistory.historical.push(histRecord.price);
+              }
+            }
             for(var i = 0; i < user.personalHistory.dates.length; i++){
-                user.personalHistory.values.push((user.personalHistory.coins[i] * user.personalHistory.historical[i]) + user.personalHistory.cash[i])
+                user.personalHistory.values.push(((user.personalHistory.coins[i] * user.personalHistory.historical[i]) + user.personalHistory.cash[i]).toFixed(2))
             };
 
             return response.data;
@@ -181,8 +240,6 @@ app.factory('apiFactory', function($http) {
             return "Issue retrieving historical data";
         });
     };
-    console.log(user.transactions);
-    console.log(user.personalHistory);
     return obj;
 });
 //days with transactions are based off curr price variables that will be stored in the transaction object
