@@ -1,6 +1,6 @@
 var app = angular.module('coinMod');
 
-app.config(function($stateProvider, $urlRouterProvider){
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
   $stateProvider.state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'views/dashboard.html'
@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             .state('info', {
               url: '/info',
               templateUrl: 'views/info.html'
-            })
+            });
 });
 
 
