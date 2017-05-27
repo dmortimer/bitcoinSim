@@ -85,8 +85,8 @@ app.factory('apiFactory', function($http) {
         var findi = 0;
         for (var i = 0; i < user.personalHistory.dates.length; i++) {
             if (user.transactions.find(function(object) {
-                    console.log(user.personalHistory.dates[i]);
-                    console.log(object.date);
+                    // console.log(user.personalHistory.dates[i]);
+                    // console.log(object.date);
                     return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
                 })) {
                 user.personalHistory.cash.push(user.transactions[findi].cash);
