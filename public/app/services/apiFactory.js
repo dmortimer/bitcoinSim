@@ -1,6 +1,4 @@
 var app = angular.module('coinMod');
-//"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-//[65, 59, 80, 81, 56, 55, 40]
 app.factory('apiFactory', function($http) {
     var obj = {};
     var historicalData;
