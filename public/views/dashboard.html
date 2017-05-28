@@ -20,8 +20,8 @@
           <h3>Your Wallet</h3><hr>
           <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
             <p><strong>Bitcoins: </strong> ฿{{assets[1] |number:4}}</p>
-              <button class="s-btn" ng-click="sellModal=true">Sell</button>
-              <button class="b-btn" ng-click="buyModal=true">Buy</button>
+              <button class="s-btn" ng-click="sellModal=true;numSell=0">Sell</button>
+              <button class="b-btn" ng-click="buyModal=true;numBuy=0">Buy</button>
         </div>
       <!-- </div> -->
   </div>
@@ -36,7 +36,7 @@
         <div class="modal_window" ng-show="buyModal">
             <div class="modal_body">
               <div class="glyphicon glyphicon-remove" ng-click="buyModal=false"></div>
-              <form class="form buySellModal" ng-submit="buyCoin(numBuy)">
+              <form class="form buySellModal" ng-submit="buyCoin(numBuy);buyModal=false">
                 <h3>Buy Bitcoins</h3><hr>
                 <h4>How many Bitcoins would you like to Buy?</h4><br>
                 <div class="">
@@ -52,7 +52,7 @@
           <div class="modal_window" ng-show="sellModal">
               <div class="modal_body">
                 <div class="glyphicon glyphicon-remove" ng-click="sellModal=false"></div>
-                <form class="form buySellModal" ng-submit="sellCoin(numSell)">
+                <form class="form buySellModal" ng-submit="sellCoin(numSell);sellModal=false">
                   <h3>Sell Bitcoins</h3><hr>
                   <h4>How many Bitcoins would <br>you like to sell?</h4><br>
                   <input ng-model="numSell" type="number" min="0" placeholder="0" required="required" ng-min="0" step=".0001"/>
