@@ -12,7 +12,39 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             .state('info', {
               url: '/info',
               templateUrl: 'views/info.html'
-            });
+            })
+            .state('info.weekly', {
+              url: '/weekly',
+              views: {
+                '':{
+              templateUrl: 'views/info.weekly.html'
+                }
+              }
+            })
+            .state('info.monthly', {
+              url: '/monthly',
+              views: {
+                '':{
+              templateUrl: 'views/info.monthly.html'
+                }
+              }
+            })
+            .state('info.yearly', {
+              url: '/yearly',
+              views: {
+                '':{
+              templateUrl: 'views/info.yearly.html'
+                }
+              }
+            })
+            .state('info.total', {
+              url: '/total',
+              views: {
+                '':{
+              templateUrl: 'views/info.total.html'
+              }
+            }
+          });
 });
 
 
