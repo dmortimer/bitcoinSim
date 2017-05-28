@@ -1,20 +1,8 @@
 var app = angular.module('coinMod');
 
 app.controller('hgraphController', function ($scope, $interval, apiFactory) {
-    var monthlyPrices = [];
-    var monthlyDates = [];
-    var weeklyPrices = [];
-    var weeklyDates = [];
-    var yearlyPrices = [];
-    var yearlyDates = [];
     var hprice = [];
     var hdate = [];
-    var todayYear = new Date();
-    var yearBack = new Date(todayYear.setDate(todayYear.getDate() - 365));
-    var todayMonth = new Date();
-    var monthBack = new Date(todayMonth.setDate(todayMonth.getDate() - 31));
-    var todayWeek = new Date();
-    var weekBack = new Date(todayWeek.setDate(todayWeek.getDate() - 7));
 
      $scope.getHistoricalData = function () {
        apiFactory.getHistoricalData().then(function (response) {
@@ -27,27 +15,6 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
         //    console.log(hprice);
         //    console.log(hdate);
          });
-         var weekIndex = $scope.historicalData.findIndex(function(object) {
-           return weekBack.getFullYear() === object.price_date.getFullYear() && weekBack.getMonth() === object.price_date.getMonth() && weekBack.getDate() === object.price_date.getDate();
-         });
-         for (var i = weekIndex; i < $scope.historicalData.length; i++){
-          weeklyPrices.push($scope.historicalData[i].price);
-          weeklyDates.push($scope.historicalData[i].price_date.toISOString().substring(0,10));
-         }
-         var monthIndex = $scope.historicalData.findIndex(function(object) {
-           return monthBack.getFullYear() === object.price_date.getFullYear() && monthBack.getMonth() === object.price_date.getMonth() && monthBack.getDate() === object.price_date.getDate();
-         });
-         for (var i = monthIndex; i < $scope.historicalData.length; i++){
-          monthlyPrices.push($scope.historicalData[i].price);
-          monthlyDates.push($scope.historicalData[i].price_date.toISOString().substring(0,10));
-         }
-         var yearIndex = $scope.historicalData.findIndex(function(object) {
-           return yearBack.getFullYear() === object.price_date.getFullYear() && yearBack.getMonth() === object.price_date.getMonth() && yearBack.getDate() === object.price_date.getDate();
-         });
-         for (var i = yearIndex; i < $scope.historicalData.length; i++){
-          yearlyPrices.push($scope.historicalData[i].price);
-          yearlyDates.push($scope.historicalData[i].price_date.toISOString().substring(0,10));
-         }
          var ctx = document.getElementById("h-chart");
          var historicalChart = new Chart(ctx, {
            type: 'line',
