@@ -3,7 +3,6 @@ var app = angular.module('coinMod');
 app.controller('usergraphController', function($scope, $interval, apiFactory) {
 
     apiFactory.getHistoricalData().then(function() {
-        console.log("hello");
         var ctx = document.getElementById("user-chart");
         var userChart = new Chart(ctx, {
             type: 'line',
