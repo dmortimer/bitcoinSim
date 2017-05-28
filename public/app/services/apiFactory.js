@@ -15,71 +15,91 @@ app.factory('apiFactory', function($http) {
           //note that all transaction dates need to have an added 1 day to compensate for timezone BS
           {
             date: new Date(2017, 0, 1, 9, 30, 32, 0),
-            coinChainge: 0,
+            displayDate: '2017-01-01',
+            coinChange: 0,
             numCoins: 0,
+            type: 'Account Created',
             price: 997.6888,
             cash: 30000
           },
           {
               date: new Date(2017, 0, 1, 9, 33, 32, 0),
-              coinChainge: 3,
+              displayDate: '2017-01-01',
+              coinChange: 3,
               numCoins: 3,
+              type: 'Bought',
               price: 997.6888,
               cash: 27006.9336
           },
           {
               date: new Date(2017, 0, 1, 10, 30, 32, 0),
+              displayDate: '2017-01-01',
               coinChange: -2,
               numCoins: 1,
+              type: 'Sold',
               price: 997.6888,
               cash: 29002.3112
           },
           {
               date: new Date(2017, 2, 2, 8, 30, 32, 0),
+              displayDate: '2017-03-02',
               coinChange: 4,
               numCoins: 5,
+              type: 'Bought',
               price: 1260.924,
               cash: 23958.6152
           },
           {
               date: new Date(2017, 2, 2, 8, 30, 33, 0),
+              displayDate: '2017-03-02',
               coinChange: -5,
               numCoins: 0,
+              type: 'Sold',
               price: 1260.924,
               cash: 30263.2352
           },
           {
               date: new Date(2017, 3, 26, 8, 30, 32, 0),
+              displayDate: '2017-04-26',
               coinChange: 2,
               numCoins: 2,
+              type: 'Bought',
               price: 1284.845,
               cash: 27693.5452
           },
           {
               date: new Date(2017, 3, 27, 8, 30, 32, 0),
+              displayDate: '2017-04-27',
               coinChange: 2,
               numCoins: 4,
+              type: 'Bought',
               price: 1329.19,
               cash: 25035.1652
           },
           {
               date: new Date(2017, 3, 27, 8, 30, 40, 0),
+              displayDate: '2017-04-27',
               coinChange: -2,
               numCoins: 2,
+              type: 'Sold',
               price: 1329.19,
               cash: 27693.5452
           },
           {
               date: new Date(2017, 3, 27, 8, 30, 45, 0),
+              displayDate: '2017-04-27',
               coinChange: -2,
               numCoins: 0,
+              type: 'Sold',
               price: 1329.19,
               cash: 30351.9252
           },
           {
               date: new Date(2017, 3, 27, 8, 30, 59, 0),
+              displayDate: '2017-04-27',
               coinChange: 10,
               numCoins: 10,
+              type: 'Bought',
               price: 1329.19,
               cash: 17060.0252
           }
@@ -180,23 +200,29 @@ app.factory('apiFactory', function($http) {
     //buy coin function that logs transaction
     obj.buyCoin = function(numBuy) {
       //TODO BE ON THE LOOKOUT FOR ISSUES WITH LOGGING THE DATE AND THE TIMEZONE PROBLEM
-        user.transactions.push({
+        var newTransaction = {
           date: new Date(),
           coinChange: numBuy,
           numCoins: user.transactions[user.transactions.length - 1].numCoins + numBuy,
+          type: 'Bought',
           cash: user.transactions[user.transactions.length - 1].cash - (numBuy * currPrice)
-        });
+        };
+        newTransaction.displayDate = newTransaction.date.toISOString().substring(0,10)
+        user.transactions.push(newTransaction);
         user.populateAssets();
         return user.assets;
     };
     //same as above but for sell
     obj.sellCoin = function(numSell) {
-        user.transactions.push({
+        var newTransaction = {
           date: new Date(),
           coinChange: -numSell,
           numCoins: user.transactions[user.transactions.length - 1].numCoins - numSell,
+          type: 'Sold',
           cash: user.transactions[user.transactions.length - 1].cash + (numSell * currPrice)
-        });
+        };
+        newTransaction.displayDate = newTransaction.date.toISOString().substring(0,10)
+        user.transactions.push(newTransaction);
         user.populateAssets();
         return user.assets;
     };

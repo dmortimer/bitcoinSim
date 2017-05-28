@@ -1,12 +1,12 @@
 var originalOnePerDay = [{
   date: new Date(2017, 0, 1, 9, 30, 32, 0),
-  coinChainge: 0,
+  coinChange: 0,
   numCoins: 0,
   cash: 30000
 },
 {
     date: new Date(2017, 0, 4, 8, 30, 32, 0),
-    coinChainge: 3,
+    coinChange: 3,
     numCoins: 3,
     cash: 26944.5
 },
@@ -37,14 +37,14 @@ var originalOnePerDay = [{
 
 var multiplePerDay = [{
   date: new Date(2017, 0, 1, 9, 30, 32, 0),
-  coinChainge: 0,
+  coinChange: 0,
   numCoins: 0,
   price: 997.6888,
   cash: 30000
 },
 {
     date: new Date(2017, 0, 1, 9, 33, 32, 0),
-    coinChainge: 3,
+    coinChange: 3,
     numCoins: 3,
     price: 997.6888,
     cash: 27006.9336
