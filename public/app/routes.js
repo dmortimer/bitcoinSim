@@ -11,7 +11,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             })
             .state('info', {
               url: '/info',
-              templateUrl: 'views/info.html'
+              templateUrl: 'views/info.html',
+              //sets info view to default to the total view
+              redirectTo: 'info.total'
             })
             .state('info.weekly', {
               url: '/weekly',
@@ -45,6 +47,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
               }
             }
           });
+          //sets application to default to signin page on load or any invalid route
+          $urlRouterProvider.otherwise('signin');
 });
 
 
