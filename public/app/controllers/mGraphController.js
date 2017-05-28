@@ -1,6 +1,6 @@
 var app = angular.module('coinMod');
 
-app.controller('hgraphController', function ($scope, $interval, apiFactory) {
+app.controller('mGraphController', function ($scope, $interval, apiFactory) {
     var monthlyPrices = [];
     var monthlyDates = [];
     var weeklyPrices = [];
@@ -48,14 +48,14 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
           yearlyPrices.push($scope.historicalData[i].price);
           yearlyDates.push($scope.historicalData[i].price_date.toISOString().substring(0,10));
          }
-         var ctx = document.getElementById("h-chart");
-         var historicalChart = new Chart(ctx, {
+         var chartM = document.getElementById("m-chart");
+         var mChart = new Chart(chartM, {
            type: 'line',
            data: {
-             labels: hdate,
+             labels: monthlyDates,
              datasets: [
                  {
-                     label: "Bitcoin Prices since 2010",
+                     label: "Monthly Bitcoin Prices",
                      fill: true,
                      lineTension: 0.1,
                      backgroundColor: "rgba(75,192,192,0.4)",
@@ -73,7 +73,7 @@ app.controller('hgraphController', function ($scope, $interval, apiFactory) {
                      pointHoverBorderWidth: 2,
                      pointRadius: 1,
                      pointHitRadius: 10,
-                     data: hprice,
+                     data: monthlyPrices,
                      spanGaps: false
                  }
              ]
