@@ -174,6 +174,9 @@ app.factory('apiFactory', function($http) {
     obj.getPersonalHistoryValues = function() {
         return user.personalHistory.values;
     };
+    obj.getTransactionData = function() {
+       return user.transactions;
+   };
     //buy coin function that logs transaction
     obj.buyCoin = function(numBuy) {
       //TODO BE ON THE LOOKOUT FOR ISSUES WITH LOGGING THE DATE AND THE TIMEZONE PROBLEM

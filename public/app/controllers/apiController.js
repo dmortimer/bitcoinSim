@@ -37,5 +37,22 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       return $scope.assets;
     }
   };
+  $scope.transactions = apiFactory.getTransactionData();
+    $scope.transactionStuff = function() {
+        $scope.transactions.forEach(function(i) {
+            if (i.coinChange == 0) {
+                i.type = "Acount Created"
+            } else if (i.coinChange > 0) {
+                i.type = "Bought"
+            } else if (i.coinChange < 0) {
+                i.type = "Sold"
+            };
+            console.log(i.type);
+            i.displayDate = i.date.toISOString().substring(0,10);
+            console.log(i.displayDate);
+        });
+
+    };
+    $scope.transactionStuff();
 
 });
