@@ -7,7 +7,17 @@ app.factory('apiFactory', function($http) {
     var user;
     //method to populate user.peronalHistory with dates, display dates, cash amounts, and coin amounts based on user account information and transaction history
     obj.populatePersonalHistory = function() {
+        user.personalHistory = {
+            dates: [],
+            displayDates: [],
+            cash: [],
+            coins: [],
+            historical: [],
+            values: []
+        };
+        //fix dates for timezone issue
         var firstDate = user.accountDate;
+        var firstDate = new Date(firstDate.setDate(firstDate.getDate() - 2));
         var lastDate = new Date();
         var lastDate = new Date(lastDate.setDate(lastDate.getDate() - 2));
         var currDate = firstDate;
@@ -81,17 +91,27 @@ app.factory('apiFactory', function($http) {
    };
     //buy coin function that logs transaction
     obj.buyCoin = function(numBuy) {
-      //TODO BE ON THE LOOKOUT FOR ISSUES WITH LOGGING THE DATE AND THE TIMEZONE PROBLEM, ESPECIALLY WHEN PULLING DATES ADDED FROM USER INTERACTION TO USER HISTORY GRAPH, THEY MAY BE THE DAY BEFORE
         var newTransaction = {
           date: new Date(),
           coinChange: numBuy,
           numCoins: user.transactions[user.transactions.length - 1].numCoins + numBuy,
           type: 'Bought',
+          price: currPrice,
           cash: user.transactions[user.transactions.length - 1].cash - (numBuy * currPrice)
         };
         newTransaction.displayDate = newTransaction.date.toISOString().substring(0,10)
         user.transactions.push(newTransaction);
         user.populateAssets();
+        //put request to update user data in server when transaction is made
+        $http({
+          method: 'PUT',
+          url: '/api/user',
+          data: user
+        }).then(function (response) {
+          console.log('Database updated for new transaction');
+        }).catch(function (error) {
+          console.log(error);
+        });
         return user.assets;
     };
     //same as above but for sell
@@ -101,11 +121,21 @@ app.factory('apiFactory', function($http) {
           coinChange: -numSell,
           numCoins: user.transactions[user.transactions.length - 1].numCoins - numSell,
           type: 'Sold',
+          price: currPrice,
           cash: user.transactions[user.transactions.length - 1].cash + (numSell * currPrice)
         };
         newTransaction.displayDate = newTransaction.date.toISOString().substring(0,10)
         user.transactions.push(newTransaction);
         user.populateAssets();
+        $http({
+          method: 'PUT',
+          url: '/api/user',
+          data: user
+        }).then(function (response) {
+          console.log('Database updated for new transaction');
+        }).catch(function (error) {
+          console.log(error);
+        });
         return user.assets;
     };
     //Pull the current price from the coindesk api
@@ -186,15 +216,8 @@ app.factory('apiFactory', function($http) {
         user.transactions.forEach(function (item) {
           item.date = new Date(item.date);
         });
-        //add personalHistory object to user object
-        user.personalHistory = {
-            dates: [],
-            displayDates: [],
-            cash: [],
-            coins: [],
-            historical: [],
-            values: []
-        };
+        //delete personalHistory object from user object so it can be repopulated with new historical data
+        delete user.personalHistory;
         //populates assets property based on most recent transaction
         user.populateAssets = function () {
           this.assets[0] = this.transactions[this.transactions.length - 1].cash;
