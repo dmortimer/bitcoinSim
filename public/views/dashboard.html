@@ -1,5 +1,5 @@
   <h1 class="pg_header">Dashboard</h1>
-  
+
 <div class="db-page">
 
 
@@ -25,41 +25,46 @@
               <button class="s-btn" ng-click="sellModal=true">Sell</button>
               <button class="b-btn" ng-click="buyModal=true">Buy</button>
         </div>
-      <!-- </div> -->
   </div>
 
-  <div class="row db_card_hd">
-    <div class="col-lg-7 col-md-3  col-xs-12 dbd_card"><h3>Currency Comparisons</h3><hr></div>
-    <div class="col-lg-4 col-md-3 col-xs-12 dbd_card"><h3>Bitcoin Price (USD)</h3><hr><h1 id="bcprice">฿  {{currentPrice | number:4}}</h1><p id="date_posted">Updated on Date Here</em></p>
-    </div>
-  </div>
 
         <!-- Buy Modal Window -->
-        <div class="modal_window" ng-show="buyModal">
-            <div class="modal_body">
-              <div class="glyphicon glyphicon-remove" ng-click="buyModal=false"></div>
-              <form class="form buySellModal" ng-submit="buyCoin(numBuy)">
-                <h3>Buy Bitcoins</h3><hr>
-                <h4>How many Bitcoins would you like to Buy?</h4><br>
-                <div class="">
-                 {{ numBuy * currentPrice|currency}}
-                  <input ng-model="numBuy" type="number" min="0" placeholder="0" required="required" ng-min="0" step="0.0001"/>
-                  <p class="message"></p><br>
+        <div class="row db_card_hd">
+            <div class="col-lg-7 col-md-3  col-xs-12 dbd_card"><h3>Transaction History</h3><hr>
+                <div ng-repeat="transaction in transactions | orderBy:'-'">
+                    <span>{{transaction.displayDate}} <br> {{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC <br> Balance: {{transaction.numCoins}} BTC | ${{(transaction.cash).toFixed(2)}} USD<hr></span>
                 </div>
-                <button type="submit">Buy</button>
-              </form>
             </div>
+          <div class="col-lg-4 col-md-3 col-xs-12 dbd_card"><h3>Current Bitcoin Price (USD)</h3><hr><h1 id="bcprice">฿  {{currentPrice | number:4}}</h1><p id="date_posted">Updated on Date Here</em></p>
           </div>
+        </div>
 
-          <div class="modal_window" ng-show="sellModal">
-              <div class="modal_body">
-                <div class="glyphicon glyphicon-remove" ng-click="sellModal=false"></div>
-                <form class="form buySellModal" ng-submit="sellCoin(numSell)">
-                  <h3>Sell Bitcoins</h3><hr>
-                  <h4>How many Bitcoins would <br>you like to sell?</h4><br>
-                  <input ng-model="numSell" type="number" min="0" placeholder="0" required="required" ng-min="0" step=".0001"/>
-                  <p class="message">* maximum is {{assets[1] |currency:"฿ "}} in account</p><br>
-                  <button type="submit">Sell</button>
-                </form>
-              </div>
-            </div>
+              <!-- Buy Modal Window -->
+              <div class="modal_window" ng-show="buyModal">
+                  <div class="modal_body">
+                    <div class="glyphicon glyphicon-remove" ng-click="buyModal=false"></div>
+                    <form class="form buySellModal" ng-submit="buyCoin(numBuy);buyModal=false">
+                      <h3>Buy Bitcoins</h3><hr>
+                      <h4>How many Bitcoins would you like to Buy?</h4><br>
+                      <div class="">
+                       {{ numBuy * currentPrice|currency}}
+                        <input ng-model="numBuy" type="number" min="0" placeholder="0" required="required" ng-min="0" step="0.0001"/>
+                        <p class="message"></p><br>
+                      </div>
+                      <button type="submit">Buy</button>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="modal_window" ng-show="sellModal">
+                    <div class="modal_body">
+                      <div class="glyphicon glyphicon-remove" ng-click="sellModal=false"></div>
+                      <form class="form buySellModal" ng-submit="sellCoin(numSell);sellModal=false">
+                        <h3>Sell Bitcoins</h3><hr>
+                        <h4>How many Bitcoins would <br>you like to sell?</h4><br>
+                        <input ng-model="numSell" type="number" min="0" placeholder="0" required="required" ng-min="0" step=".0001"/>
+                        <p class="message">* maximum is {{assets[1] |currency:"฿ "}} in account</p><br>
+                        <button type="submit">Sell</button>
+                      </form>
+                    </div>
+                  </div>
