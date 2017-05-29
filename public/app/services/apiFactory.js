@@ -4,122 +4,7 @@ app.factory('apiFactory', function($http) {
     var historicalData;
     var histSubArray = [];
     var currPrice;
-    var user = {
-        username: 'testuser',
-        password: '12345',
-        startingCash: 30000,
-        startingCoins: 0,
-        assets: [],
-        accountDate: new Date(2017, 0, 0, 8, 30, 32, 0),
-        transactions: [
-          //note that all transaction dates need to have an added 1 day to compensate for timezone BS
-          {
-            date: new Date(2017, 0, 1, 9, 30, 32, 0),
-            displayDate: '2017-01-01',
-            coinChange: 0,
-            numCoins: 0,
-            type: 'Account Created',
-            price: 997.6888,
-            cash: 30000
-          },
-          {
-              date: new Date(2017, 0, 1, 9, 33, 32, 0),
-              displayDate: '2017-01-01',
-              coinChange: 3,
-              numCoins: 3,
-              type: 'Bought',
-              price: 997.6888,
-              cash: 27006.9336
-          },
-          {
-              date: new Date(2017, 0, 1, 10, 30, 32, 0),
-              displayDate: '2017-01-01',
-              coinChange: -2,
-              numCoins: 1,
-              type: 'Sold',
-              price: 997.6888,
-              cash: 29002.3112
-          },
-          {
-              date: new Date(2017, 2, 2, 8, 30, 32, 0),
-              displayDate: '2017-03-02',
-              coinChange: 4,
-              numCoins: 5,
-              type: 'Bought',
-              price: 1260.924,
-              cash: 23958.6152
-          },
-          {
-              date: new Date(2017, 2, 2, 8, 30, 33, 0),
-              displayDate: '2017-03-02',
-              coinChange: -5,
-              numCoins: 0,
-              type: 'Sold',
-              price: 1260.924,
-              cash: 30263.2352
-          },
-          {
-              date: new Date(2017, 3, 26, 8, 30, 32, 0),
-              displayDate: '2017-04-26',
-              coinChange: 2,
-              numCoins: 2,
-              type: 'Bought',
-              price: 1284.845,
-              cash: 27693.5452
-          },
-          {
-              date: new Date(2017, 3, 27, 8, 30, 32, 0),
-              displayDate: '2017-04-27',
-              coinChange: 2,
-              numCoins: 4,
-              type: 'Bought',
-              price: 1329.19,
-              cash: 25035.1652
-          },
-          {
-              date: new Date(2017, 3, 27, 8, 30, 40, 0),
-              displayDate: '2017-04-27',
-              coinChange: -2,
-              numCoins: 2,
-              type: 'Sold',
-              price: 1329.19,
-              cash: 27693.5452
-          },
-          {
-              date: new Date(2017, 3, 27, 8, 30, 45, 0),
-              displayDate: '2017-04-27',
-              coinChange: -2,
-              numCoins: 0,
-              type: 'Sold',
-              price: 1329.19,
-              cash: 30351.9252
-          },
-          {
-              date: new Date(2017, 3, 27, 8, 30, 59, 0),
-              displayDate: '2017-04-27',
-              coinChange: 10,
-              numCoins: 10,
-              type: 'Bought',
-              price: 1329.19,
-              cash: 17060.0252
-          }
-        ],
-        personalHistory: {
-            dates: [],
-            displayDates: [],
-            cash: [],
-            coins: [],
-            historical: [],
-            values: []
-        },
-        //populates assets property based on most recent transaction
-        populateAssets: function () {
-          this.assets[0] = this.transactions[this.transactions.length - 1].cash;
-          this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
-        }
-    };
-    //populate assets on page load
-    user.populateAssets();
+    var user;
     //method to populate user.peronalHistory with dates, display dates, cash amounts, and coin amounts based on user account information and transaction history
     obj.populatePersonalHistory = function() {
         var firstDate = user.accountDate;
@@ -182,9 +67,6 @@ app.factory('apiFactory', function($http) {
           }
         }
     };
-
-
-    obj.populatePersonalHistory();
     obj.getCurrentAssets = function() {
         return user.assets;
     };
@@ -199,7 +81,7 @@ app.factory('apiFactory', function($http) {
    };
     //buy coin function that logs transaction
     obj.buyCoin = function(numBuy) {
-      //TODO BE ON THE LOOKOUT FOR ISSUES WITH LOGGING THE DATE AND THE TIMEZONE PROBLEM
+      //TODO BE ON THE LOOKOUT FOR ISSUES WITH LOGGING THE DATE AND THE TIMEZONE PROBLEM, ESPECIALLY WHEN PULLING DATES ADDED FROM USER INTERACTION TO USER HISTORY GRAPH, THEY MAY BE THE DAY BEFORE
         var newTransaction = {
           date: new Date(),
           coinChange: numBuy,
@@ -291,17 +173,40 @@ app.factory('apiFactory', function($http) {
             return "Issue retrieving historical data";
         });
     };
+    //api request to get user information
     obj.getUser = function () {
       return $http({
         method: 'GET',
         url: '/api/user'
       }).then(function (response) {
-        var userObject = JSON.parse(response.data[0].everything);
-        console.log(userObject);
+        //store user data in factory user object
+        user = JSON.parse(response.data[0].everything);
+        //convert stored date unix numbers to javascript date objects for accountDate and transaction dates
+        user.accountDate = new Date(user.accountDate);
+        user.transactions.forEach(function (item) {
+          item.date = new Date(item.date);
+        });
+        //add personalHistory object to user object
+        user.personalHistory = {
+            dates: [],
+            displayDates: [],
+            cash: [],
+            coins: [],
+            historical: [],
+            values: []
+        };
+        //populates assets property based on most recent transaction
+        user.populateAssets = function () {
+          this.assets[0] = this.transactions[this.transactions.length - 1].cash;
+          this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
+        };
+        //populate assets after user information is loaded
+        user.populateAssets();
+        //populate personal history after user information is loaded
+        obj.populatePersonalHistory();
       }).catch(function (error) {
         console.log(error);
       });
     };
-    obj.getUser();
     return obj;
 });

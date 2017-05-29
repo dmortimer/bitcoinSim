@@ -14,9 +14,7 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   }, 20000);
   $scope.getCurrentAssets = function () {
     $scope.assets = apiFactory.getCurrentAssets();
-    // console.log($scope.assets);
   }
-  $scope.getCurrentAssets();
   $scope.buyCoin = function (numBuy) {
     if(($scope.currentPrice * numBuy) < $scope.assets[0] ){
     $scope.assets = apiFactory.buyCoin(numBuy);
@@ -37,5 +35,8 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       return $scope.assets;
     }
   };
-  $scope.transactions = apiFactory.getTransactionData();
+  apiFactory.getUser().then(function () {
+    $scope.getCurrentAssets();
+    $scope.transactions = apiFactory.getTransactionData();
+  });
 });
