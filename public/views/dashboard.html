@@ -27,7 +27,11 @@
   </div>
 
   <div class="row db_card_hd">
-    <div class="col-lg-7 col-md-3  col-xs-12 dbd_card"><h3>Currency Comparisons</h3><hr></div>
+      <div class="col-lg-7 col-md-3  col-xs-12 dbd_card"><h3>Transaction History</h3><hr>
+          <div ng-repeat="transaction in transactions | orderBy:'-'">
+              <span>{{transaction.displayDate}} <br> {{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC <br> Balance: {{transaction.numCoins}} BTC | ${{(transaction.cash).toFixed(2)}} USD<hr></span>
+          </div>
+      </div>
     <div class="col-lg-4 col-md-3 col-xs-12 dbd_card"><h3>Current Bitcoin Price (USD)</h3><hr><h1 id="bcprice">฿  {{currentPrice | number:4}}</h1><p id="date_posted">Updated on Date Here</em></p>
     </div>
   </div>

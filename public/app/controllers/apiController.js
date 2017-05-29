@@ -14,7 +14,7 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   }, 20000);
   $scope.getCurrentAssets = function () {
     $scope.assets = apiFactory.getCurrentAssets();
-    console.log($scope.assets);
+    // console.log($scope.assets);
   }
   $scope.getCurrentAssets();
   $scope.buyCoin = function (numBuy) {
@@ -37,5 +37,5 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       return $scope.assets;
     }
   };
-
+  $scope.transactions = apiFactory.getTransactionData();
 });
