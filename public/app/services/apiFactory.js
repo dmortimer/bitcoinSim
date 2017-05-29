@@ -5,6 +5,7 @@ app.factory('apiFactory', function($http) {
     var histSubArray = [];
     var currPrice;
     var user = {
+        name:'Jane Doe',
         username: 'testuser',
         password: '12345',
         email: 'testuser@gmail.com',
@@ -119,6 +120,13 @@ app.factory('apiFactory', function($http) {
           this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
         }
     };
+
+
+
+
+
+
+
     //populate assets on page load
     user.populateAssets();
     //method to populate user.peronalHistory with dates, display dates, cash amounts, and coin amounts based on user account information and transaction history
@@ -198,6 +206,9 @@ app.factory('apiFactory', function($http) {
     obj.getTransactionData = function() {
        return user.transactions;
    };
+   obj.getUserInfo = function() {
+      return user;
+  };
     //buy coin function that logs transaction
     obj.buyCoin = function(numBuy) {
       //TODO BE ON THE LOOKOUT FOR ISSUES WITH LOGGING THE DATE AND THE TIMEZONE PROBLEM
@@ -295,4 +306,5 @@ app.factory('apiFactory', function($http) {
 
     };
     return obj;
+
 });

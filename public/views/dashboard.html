@@ -29,12 +29,12 @@
 <!--Card  ################################### -->
     <div class="dbd_card col-lg-2 col-md-3 col-sm-4 col-xs-12 ">
       <h3>Your Account</h3><hr>
-      <p><strong>Name: </strong>{{"Jane Doe"}}</p>
-      <p><strong>Username: </strong>{{"UnPlaceholder"}}</p>
-      <p><strong>Email: </strong>{{"email@email.com"}}</p>
+      <p><strong>Name: </strong>{{user.name}}</p>
+      <p><strong>Username: </strong>{{user.username}}</p>
+      <p><strong>Email: </strong>{{user.email}}</p>
     </div>
     <!--Card  ################################### -->
-    <div class="dbd_card col-lg-2 col-md-2 col-sm-5 col-xs-12"><h3>Current Bitcoin Price</h3><hr><h1 id="bcprice">$  {{currentPrice | number:2}}</h1><p id="date_posted">{{ date | date:"MMM d, y h:mm:ss a" }}</em></p>
+    <div class="dbd_card col-lg-2 col-md-2 col-sm-5 col-xs-12"><h3>Current Bitcoin Price</h3><hr><h1 id="bcprice">$  {{currentPrice | number:2}}</h1><p id="date_posted">{{ date | date:"MMM d, y h:mm" }}</em></p>
     </div>
   </div>
 

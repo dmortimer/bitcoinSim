@@ -10,7 +10,7 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   };
   $scope.getCurrentPrice();
   $interval(function () {
-    $scope.getCurrentPrice();
+  $scope.getCurrentPrice();
   }, 20000);
   $scope.getCurrentAssets = function () {
     $scope.assets = apiFactory.getCurrentAssets();
@@ -39,8 +39,7 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
   };
   $scope.transactions = apiFactory.getTransactionData();
   $scope.date= new Date();
-
-
+  $scope.user = apiFactory.getUserInfo();
 
 
 });
