@@ -179,7 +179,7 @@ li a:hover, li a:active, li a:focus{
   background-color:#eff1f4;
 }
 
-.db_header{
+.pg_header{
   background-color:rgb(50,146,57);
   text-align: center;
   height:70px;
@@ -188,8 +188,7 @@ li a:hover, li a:active, li a:focus{
   margin-top:-25px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.db_card_hd{margin:2%;text-align:left;
-}
+.db_card_hd{text-align:left;}
 .db_card_hd h3{
   font-size:120%;
   font-weight: bold;
@@ -201,12 +200,14 @@ li a:hover, li a:active, li a:focus{
 }
 .dbd_card{
   position: relative;
-  padding: 0 5% 5% 5%;
   margin: 1%;
   background: #FFFFFF;
   height:auto;
   min-height: 200px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.db-page .row{
+  margin:0 auto;
 }
 .acct_graph{
   width:95%;
@@ -257,6 +258,7 @@ li a:hover, li a:active, li a:focus{
   width:100%;
   position:relative;
   margin-top: -25px;
+  padding: 5%;
 }
 
 .landing_box{
@@ -300,7 +302,12 @@ li a:hover, li a:active, li a:focus{
 
 
 /*footer*/
-footer{height:60px;}
+footer{
+  height:60px;
+  z-index: 999;
+  bottom: 0;
+  width: 100%;
+}
 
 .modal_window{
   height:100%;
@@ -343,11 +350,9 @@ footer{height:60px;}
   width:50%;
 }
 
-
-
 /*Media Queries*/
 
-@media screen and (max-width:1200px) and (min-width:300px){
+@media screen and (max-width:1200px) and (min-width:100px){
   .box1{
     border-right:none;
     margin-bottom: 30px;
@@ -360,4 +365,10 @@ footer{height:60px;}
   padding: 10px;
   position: absolute;
   margin-top: -5px;
+}
+@media screen and (max-width:500px) and (min-width:100px){
+  .col-xs-9{
+    width:100%;
+  }
+  .l-icon{margin-left:40%;}
 }
