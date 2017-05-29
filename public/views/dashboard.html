@@ -45,9 +45,9 @@
       <form class="form buySellModal" ng-submit="buyCoin(numBuy);buyModal=false">
         <h3>Buy Bitcoins</h3><hr>
         <h4>How many Bitcoins would you like to Buy?</h4><br>
-        <div>
-          {{ numBuy * currentPrice|currency}}
-          <input ng-model="numBuy" type="number" min="0" placeholder="0" required="required" ng-min="0" step="0.0001"/>
+        <div class="row">
+          <div class="col-md-3">{{"Total"}}<br>{{numBuy * currentPrice|currency}}</div>
+          <input class="col-md-8" ng-model="numBuy" type="number" min="0" placeholder="0" required="required" ng-min="0" step="0.0001" autofocus/>
           <p class="message"></p><br>
         </div>
         <button type="submit">Buy</button>
@@ -61,11 +61,11 @@
        <form class="form buySellModal" ng-submit="sellCoin(numSell);sellModal=false">
          <h3>Sell Bitcoins</h3><hr>
          <h4>How many Bitcoins would you like to sell?</h4><br>
-         <div>
-         {{ numSell * currentPrice|currency}}
-         <input ng-model="numSell" type="number" min="0" placeholder="0" required="required" ng-min="0" step=".0001"/>
-         <p class="message">* max. is {{assets[1] |currency:"฿ "}}</p><br>
-       </div>
+         <div class="row">
+           <div class="col-md-3">{{"Total"}}<br>{{numSell * currentPrice|currency}}</div>
+           <input class="col-md-8" ng-model="numSell" type="number" min="0" placeholder="0" required="required" ng-min="0" step="0.0001" autofocus/>
+           <p class="message"></p><br>
+         </div>
          <button type="submit">Sell</button>
        </form>
      </div>

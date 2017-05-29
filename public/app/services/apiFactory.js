@@ -7,6 +7,7 @@ app.factory('apiFactory', function($http) {
     var user = {
         username: 'testuser',
         password: '12345',
+        email: 'testuser@gmail.com',
         startingCash: 30000,
         startingCoins: 0,
         assets: [],
@@ -290,6 +291,8 @@ app.factory('apiFactory', function($http) {
             console.log(error);
             return "Issue retrieving historical data";
         });
+
+
     };
     return obj;
 });

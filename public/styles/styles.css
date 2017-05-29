@@ -336,6 +336,8 @@ footer{
 .buySellModal form{top:-10%;}
 .buySellModal input{
   width:50%;
+  margin-bottom: 5%;
+  float: right;
 }
 
 /*Media Queries*/
