@@ -38,4 +38,5 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
     }
   };
   $scope.transactions = apiFactory.getTransactionData();
+  $scope.date= new Date();
 });
