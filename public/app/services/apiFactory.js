@@ -291,5 +291,17 @@ app.factory('apiFactory', function($http) {
             return "Issue retrieving historical data";
         });
     };
+    obj.getUser = function () {
+      return $http({
+        method: 'GET',
+        url: '/api/user'
+      }).then(function (response) {
+        var userObject = JSON.parse(response.data[0].everything);
+        console.log(userObject);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    };
+    obj.getUser();
     return obj;
 });

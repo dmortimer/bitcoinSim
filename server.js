@@ -15,6 +15,12 @@ app.get('/api/history', function (req, res) {
   });
 });
 
+app.get('/api/user', function (req, res) {
+  pool.query("SELECT * FROM userData").then(function (result) {
+    res.send(result.rows);
+  });
+});
+
 //hosts the server on port 8080 or process.env.PORT
 app.listen(port, function () {
   console.log('Server listening on port ' + port);
