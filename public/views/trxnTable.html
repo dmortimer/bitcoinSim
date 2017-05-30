@@ -1,0 +1,5 @@
+
+  <td>{{transaction.displayDate}}</td>
+  <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
+  <td>{{transaction.numCoins}} BTC</td>
+  <td>${{(transaction.cash).toFixed(2)}} USD</td>

@@ -1,37 +1,37 @@
 <h1 class="pg_header">Dashboard</h1>
-<div class="db-page">
-
+<div class="db-page" ng-controller="usergraphController">
   <div class="row db_card_hd">
-    <div class="dbd_card col-lg-2 col-md-2 col-sm-2 col-xs-12 "><h3>Transaction History</h3><hr>
-      <div ng-repeat="transaction in transactions | orderBy:'-'">
-        <span>{{transaction.displayDate}} <br> {{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC <br> Balance: {{transaction.numCoins}} BTC | ${{(transaction.cash).toFixed(2)}} USD<hr></span>
-        </div>
+
+    <div class="jointCard col-lg-2 col-md-3 col-sm-4 col-xs-11">
+      <div class="dbd_card"><h3>Current Bitcoin Price</h3><hr><h1 id="bcprice">$  {{currentPrice | number:2}}</h1><p id="date_posted">{{ date | date:"MMM d, y h:mm" }}</em></p>
       </div>
-    <div class="dbd_card col-lg-7 col-md-9 col-sm-9 col-xs-12 " id="dbd_acct"><h3>Account Activity</h3><hr>
-      <div ng-controller="usergraphController">
+
+      <div class="dbd_card">
+        <h3>Your Account</h3><hr>
+        <p><strong>Name: </strong>{{user.name}}</p>
+        <p><strong>Username: </strong>{{user.username}}</p>
+        <p><strong>Email: </strong>{{user.email}}</p>
+      </div>
+    </div>
+
+    <div class="dbd_card col-lg-7 col-md-8 col-sm-7 col-xs-11 " id="dbd_acct"><h3>Account Activity</h3><hr>
+      <div>
         <canvas id="user-chart"></canvas>
       </div>
     </div>
-    <div class="dbd_card col-lg-2 col-md-4 col-sm-5 col-xs-12 ">
+
+    <div class="dbd_card col-lg-2 col-md-3 col-sm-7 col-xs-11 ">
       <h3>Your Wallet</h3><hr>
-      <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
-      <p><strong>Bitcoins: </strong> ฿{{assets[1] |number:4}}</p>
-      <p><strong>Net Worth: </strong> ${{ (assets[1] * currentPrice) + assets[0] | number:4}}</p>
+      <p><strong>USD Available: <br></strong>{{assets[0] |currency}}</p>
+      <p><strong>Bitcoins: <br></strong> ฿{{assets[1] |number:4}}</p>
+      <p><strong>Net Worth: <br></strong> ${{ (assets[1] * currentPrice) + assets[0] | number:4}}</p><br>
       <div class="row">
-        <button class="s-btn col-lg-5 col-md-12" ng-click="sellModal=true">Sell</button>
-        <button class="b-btn col-lg-5 col-md-12" ng-click="buyModal=true">Buy</button>
+        <button class="s-btn col-lg-11" ng-click="sellModal=true">Sell</button><br>
+        <button class="b-btn col-lg-11" ng-click="buyModal=true">Buy</button>
       </div>
     </div>
-    <div class="dbd_card col-lg-2 col-md-3 col-sm-4 col-xs-12 ">
-      <h3>Your Account</h3><hr>
-      <p><strong>Name: </strong>{{user.name}}</p>
-      <p><strong>Username: </strong>{{user.username}}</p>
-      <p><strong>Email: </strong>{{user.email}}</p>
-    </div>
-    <div class="dbd_card col-lg-2 col-md-2 col-sm-5 col-xs-12"><h3>Current Bitcoin Price</h3><hr><h1 id="bcprice">$  {{currentPrice | number:2}}</h1><p id="date_posted">{{ date | date:"MMM d, y h:mm" }}</em></p>
-    </div>
-    <!--Table 2 Transaction History ################# -->
-    <div id="trn-tbl"class="dbd_card col-sm-7 col-md-7 col-sm-7 col-xs-12"><h3>Transaction History</h3><hr>
+    <div id="trn-tbl"class="dbd_card col-lg-7 col-md-6 col-sm-11 col-xs-11">
+      <h3>Transaction History</h3><hr>
       <table>
         <tr>
           <th>Date</th>
@@ -39,15 +39,17 @@
           <th>Balance (BTC)</th>
           <th>Balance (USD)</th>
         </tr>
-        <tr ng-repeat="transaction in transactions | orderBy:'-'">
-        <td>{{transaction.displayDate}}</td>
-        <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
-        <td>{{transaction.numCoins}} BTC</td>
-        <td>${{(transaction.cash).toFixed(2)}} USD</td></tr>
+          <tr ng-repeat="transaction in transactions | orderBy:'-'">
+            <!-- <td>{{transaction.displayDate}}</td>
+            <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
+            <td>{{transaction.numCoins}} BTC</td>
+            <td>${{(transaction.cash).toFixed(2)}} USD</td> -->
+            <hello></hello>
+          </tr>
       </table>
     </div>
   </div>
-
+</div>
 
   <div class="modal_window" ng-show="buyModal">
     <div class="modal_body">

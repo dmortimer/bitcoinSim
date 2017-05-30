@@ -303,7 +303,6 @@ app.factory('apiFactory', function($http) {
             return "Issue retrieving historical data";
         });
 
-
     };
     return obj;
 
