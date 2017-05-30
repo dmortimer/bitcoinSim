@@ -6,13 +6,11 @@
       <button class="btn btn-default"><a ui-sref="info.yearly({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Past Year</a></button>
       <button class="btn btn-default"><a ui-sref="info.total({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Total</a></button>
 </div>
-  <ui-view>
-    <div ng-controller="wGraphController">
-      <div class="row">
-          <h2 class="col-xs-12 chartHeader">Bitcoin Value This Week</h2>
-          <div class="historical_graph">
-            <canvas id="w-chart" class="col-xs-12"></canvas>
-          </div>
-      </div>
-    </div>
-  </ui-view>
+<div class="row">
+  <div class="col-sm-2 col-md-2 col-lg-2"></div>
+  <div class="dbd_card col-sm-8 col-sm-8 col-lg-8">
+    <ui-view>
+    </ui-view>
+  </div>
+  <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
