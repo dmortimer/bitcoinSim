@@ -1,4 +1,15 @@
 <h3>Transaction History</h3><hr>
+
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+      <input type="text" class="form-control" placeholder="Search Recent Transactions" ng-model="search">
+    </div>
+  </div>
+</form>
+
+
 <table>
   <tr>
     <th>Date</th>
@@ -7,7 +18,7 @@
     <th>Balance (USD)</th>
   </tr>
     <!-- <tr ng-repeat="transaction in transactions | orderBy:'-'| limitTo:5"> -->
-    <tr ng-repeat="transaction in transactions | orderBy:'-'| limitTo:5">
+    <tr ng-repeat="transaction in transactions | orderBy:sortType:sortReverse | limitTo:7| filter:search">
       <td>{{transaction.displayDate}}</td>
       <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
       <td>{{transaction.numCoins}} BTC</td>
