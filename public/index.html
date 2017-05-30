@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="850851033982-2o7nht85lme15mr70t5obf6u3fs3j4rv.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title></title>
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap-theme.min.css">
@@ -27,7 +30,9 @@
       <div ui-view></div>
 
     <footer>
-        <p>Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk<a></p>
+      <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+      <a href="#" onclick="signOut();">Sign out</a>
+      <p>Powered by <a href="http://www.coindesk.com/price/" target="_blank">CoinDesk<a></p>
     </footer>
 
     <script type="text/javascript" charset="utf-8" src="app/lib/angular.min.js"></script>
@@ -48,5 +53,26 @@
     <script type="text/javascript" charset="utf-8" src="app/controllers/usergraphController.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js'></script>
+
+
+
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+    function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+          };
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
   </body>
 </html>
