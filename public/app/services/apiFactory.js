@@ -17,8 +17,8 @@ app.factory('apiFactory', function($http) {
         };
         //fix dates for timezone issue
 
-        var firstDate = user.accountDate;
-        var firstDate = new Date(firstDate.setDate(firstDate.getDate() - 2));
+        var firstDate = new Date(user.accountDate);
+        var firstDate = new Date(firstDate.setDate(firstDate.getDate() - 1));
         var lastDate = new Date();
         var lastDate = new Date(lastDate.setDate(lastDate.getDate() - 2));
         var currDate = firstDate;
