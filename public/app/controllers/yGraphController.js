@@ -77,6 +77,14 @@ app.controller('yGraphController', function ($scope, $interval, apiFactory) {
                      spanGaps: false
                  }
              ]
+           },
+           options: {
+
+               responsive: true,
+               tooltips: {
+                   mode: 'x-axis',
+                   intersect: true
+               }
            }
          });
        });

@@ -1,4 +1,4 @@
-DROP DATABASE coinData;
+DROP TABLE coinData;
 
 CREATE TABLE coinData (id SERIAL UNIQUE PRIMARY KEY,
                        price_date DATE,
@@ -2510,3 +2510,14 @@ INSERT INTO coinData (price_date, price) VALUES('2017-05-24', 2476.2963);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-25', 2357.5038);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-26', 2247.4825);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-27', 2106.3075);
+INSERT INTO coinData (price_date, price) VALUES('2017-05-28', 2207.5775);
+INSERT INTO coinData (price_date, price) VALUES('2017-05-29', 2289.87);
+
+DROP TABLE userData;
+
+CREATE TABLE userData (id SERIAL UNIQUE PRIMARY KEY,
+                       uname TEXT,
+                       pass TEXT,
+                       everything TEXT);
+
+INSERT INTO userData (uname, pass, everything) VALUES('testuser', '12345', '{"username": "testuser","password": "12345","name": "Jane Doe", "email": "janedoe@test.com", "startingCash": 30000,"startingCoins": 0,"assets": [],"accountDate": 1483191032000,"transactions": [{"date": 1483281032000,"displayDate": "2017-01-01","coinChange": 0,"numCoins": 0,"type": "Account Created","price": 997.6888,"cash": 30000},{"date": 1483281212000,"displayDate": "2017-01-01","coinChange": 3,"numCoins": 3,"type": "Bought","price": 997.6888,"cash": 27006.9336},{"date": 1483284632000,"displayDate": "2017-01-01","coinChange": -2,"numCoins": 1,"type": "Sold","price": 997.6888,"cash": 29002.3112},{"date": 1488461432000,"displayDate": "2017-03-02","coinChange": 4,"numCoins": 5,"type": "Bought","price": 1260.924,"cash": 23958.6152},{"date": 1488461433000,"displayDate": "2017-03-02","coinChange": -5,"numCoins": 0,"type": "Sold","price": 1260.924,"cash": 30263.2352},{"date": 1493209832000,"displayDate": "2017-04-26","coinChange": 2,"numCoins": 2,"type": "Bought","price": 1284.845,"cash": 27693.5452},{"date": 1493296232000,"displayDate": "2017-04-27","coinChange": 2,"numCoins": 4,"type": "Bought","price": 1329.19,"cash": 25035.1652},{"date": 1493296240000,"displayDate": "2017-04-27","coinChange": -2,"numCoins": 2,"type": "Sold","price": 1329.19,"cash": 27693.5452},{"date": 1493296245000,"displayDate": "2017-04-27","coinChange": -2,"numCoins": 0,"type": "Sold","price": 1329.19,"cash": 30351.9252},{"date": 1493296259000,"displayDate": "2017-04-27","coinChange": 10,"numCoins": 10,"type": "Bought","price": 1329.19,"cash": 17060.0252}]}');

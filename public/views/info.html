@@ -1,28 +1,22 @@
+<div class="row">
   <h1 class="pg_header historical_hd">Historical Data</h1>
-
-<div>
-  <nav class="navbar">
-    <ul class="col-lg-12">
-      <li><a ui-sref="info.weekly({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Weekly</a></li>
-      <li><a ui-sref="info.monthly({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Monthly</a></li>
-      <li><a ui-sref="info.yearly({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Yearly</a></li>
-      <li><a ui-sref="info.total({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Total</a></li>
-    </ul>
-  </nav>
-  <ui-view></ui-view>
 </div>
 
-<!-- <div ng-controller="hgraphController">
-  <div class="row">
-    <h2 class="col-xs-12 chartHeader">Bitcoin Value This Month</h2>
-    <canvas id="m-chart" class="col-xs-12"></canvas>
+<div class="row">
+  <div class="historical">
+    <div class="btn btn-group btn-group-xs">
+      <button class="btn btn-default"><a ui-sref="info.weekly({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Past Week</a></button>
+      <button class="btn btn-default"><a ui-sref="info.monthly({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Past Month</a></button>
+      <button class="btn btn-default"><a ui-sref="info.yearly({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Past Year</a></button>
+      <button class="btn btn-default"><a ui-sref="info.total({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Total</a></button>
+    </div>
   </div>
-  <div class="row">
-    <h2 class="col-xs-12 chartHeader">Bitcoin Value This Year </h2>
-    <canvas id="y-chart" class="col-xs-12"></canvas>
+</div>
+<div class="row">
+  <div class="col-sm-2 col-md-2 col-lg-2"></div>
+  <div class="dbd_card col-sm-8 col-sm-8 col-lg-8">
+    <ui-view>
+    </ui-view>
   </div>
-  <div class="row">
-    <h2 class="col-xs-12 chartHeader">Bitcoin Value Since 2010</h2>
-    <canvas id="h-chart" class="col-xs-12"></canvas>
-  </div>
-</div> -->
+  <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>

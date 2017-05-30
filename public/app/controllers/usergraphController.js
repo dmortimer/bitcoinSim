@@ -32,6 +32,14 @@ app.controller('usergraphController', function($scope, $interval, apiFactory) {
                     scaleStartValue: 0,
                     scaleOvverride: true
                 }]
+            },
+            options: {
+
+                responsive: true,
+                tooltips: {
+                    mode: 'x-axis',
+                    intersect: true
+                }
             }
         });
     });
