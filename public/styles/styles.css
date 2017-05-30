@@ -207,7 +207,7 @@ li a:hover, li a:active, li a:focus{
   position: relative;
   margin: 1%;
 
-  padding: 0 2% 2% 2%;
+  padding: 0 1% 1% 1%;
   background: #FFFFFF;
   height:auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -221,7 +221,7 @@ li a:hover, li a:active, li a:focus{
 
 #dbd_acct{
   height:auto;
-  padding-bottom:5%;
+  /*padding-bottom:5%;*/
 }
 
 #bcprice{

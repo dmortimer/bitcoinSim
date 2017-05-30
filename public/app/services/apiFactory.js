@@ -13,7 +13,8 @@ app.factory('apiFactory', function($http) {
             cash: [],
             coins: [],
             historical: [],
-            values: []
+            values: [],
+            BTCvalues: []
         };
         //fix dates for timezone issue
 
@@ -92,6 +93,9 @@ app.factory('apiFactory', function($http) {
    };
    obj.getUserInfo = function() {
       return user;
+  };
+  obj.getBTCvalues = function() {
+      return user.personalHistory.BTCvalues;
   };
     //buy coin function that logs transaction
     obj.buyCoin = function(numBuy) {
@@ -199,7 +203,8 @@ app.factory('apiFactory', function($http) {
             }
             //calculate personal history values for each day
             for(var i = 0; i < user.personalHistory.dates.length; i++){
-                user.personalHistory.values.push(((user.personalHistory.coins[i] * user.personalHistory.historical[i]) + user.personalHistory.cash[i]).toFixed(2))
+                user.personalHistory.values.push(((user.personalHistory.coins[i] * user.personalHistory.historical[i]) + user.personalHistory.cash[i]).toFixed(2));
+                user.personalHistory.BTCvalues.push((user.personalHistory.coins[i] * user.personalHistory.historical[i]))
             };
             return response.data;
         }).catch(function(error) {

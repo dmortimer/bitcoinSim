@@ -10,7 +10,7 @@ app.controller('usergraphController', function($scope, $interval, apiFactory) {
                 labels: apiFactory.getPersonalHistoryDates(),
                 datasets: [{
                     label: "Account Value History",
-                    fill: false,
+                    fill: true,
                     lineTension: 0.1,
                     backgroundColor: "rgba(75,192,192,0.4)",
                     borderColor: "rgba(75,192,192,1)",
@@ -30,8 +30,17 @@ app.controller('usergraphController', function($scope, $interval, apiFactory) {
                     data: apiFactory.getPersonalHistoryValues(),
                     spanGaps: false,
                     scaleStartValue: 0,
-                    scaleOvverride: true
+                    scaleOvverride: true,
+                    animation: true
                 }]
+            },
+            options: {
+
+                responsive: true,
+                tooltips: {
+                    mode: 'x-axis',
+                    intersect: true
+                }
             }
         });
     });
