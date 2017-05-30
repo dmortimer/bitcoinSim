@@ -7,13 +7,11 @@
         <span>{{transaction.displayDate}} <br> {{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC <br> Balance: {{transaction.numCoins}} BTC | ${{(transaction.cash).toFixed(2)}} USD<hr></span>
         </div>
       </div>
-
     <div class="dbd_card col-lg-7 col-md-9 col-sm-9 col-xs-12 " id="dbd_acct"><h3>Account Activity</h3><hr>
       <div ng-controller="usergraphController">
         <canvas id="user-chart"></canvas>
       </div>
     </div>
-
     <div class="dbd_card col-lg-2 col-md-4 col-sm-5 col-xs-12 ">
       <h3>Your Wallet</h3><hr>
       <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
@@ -33,7 +31,7 @@
     <div class="dbd_card col-lg-2 col-md-2 col-sm-5 col-xs-12"><h3>Current Bitcoin Price</h3><hr><h1 id="bcprice">$  {{currentPrice | number:2}}</h1><p id="date_posted">{{ date | date:"MMM d, y h:mm" }}</em></p>
     </div>
     <!--Table 2 Transaction History ################# -->
-    <div id="trn-tbl"class="dbd_card col-sm-9 col-xs-12"><h3>Transaction History</h3><hr>
+    <div id="trn-tbl"class="dbd_card col-sm-7 col-md-7 col-sm-7 col-xs-12"><h3>Transaction History</h3><hr>
       <table>
         <tr>
           <th>Date</th>
