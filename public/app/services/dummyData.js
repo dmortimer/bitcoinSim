@@ -38,6 +38,8 @@ var originalOnePerDay = [{
 var multiplePerDay = [{
     username: 'testuser',
     password: '12345',
+    name: 'Jane Doe',
+    email: 'janedoe@test.com',
     startingCash: 30000,
     startingCoins: 0,
     assets: [],

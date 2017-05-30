@@ -6,9 +6,10 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       $scope.currentPrice = response;
     });
   };
+  $scope.date= new Date();
   $scope.getCurrentPrice();
   $interval(function () {
-    $scope.getCurrentPrice();
+  $scope.getCurrentPrice();
   }, 20000);
   $scope.getCurrentAssets = function () {
     $scope.assets = apiFactory.getCurrentAssets();
@@ -19,7 +20,6 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
     $scope.buyModal=false;
   }
     else {
-      alert ('Insufficient Funds');
       return $scope.assets;
     }
   };
@@ -29,12 +29,12 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       $scope.sellModal=false;
     }
     else {
-      alert ('There is only ฿ ' + $scope.assets[1] + '.00 coins in your wallet');
       return $scope.assets;
     }
   };
   apiFactory.getUser().then(function () {
     $scope.getCurrentAssets();
     $scope.transactions = apiFactory.getTransactionData();
+    $scope.user = apiFactory.getUserInfo();
   });
 });

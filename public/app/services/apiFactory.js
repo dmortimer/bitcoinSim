@@ -16,6 +16,7 @@ app.factory('apiFactory', function($http) {
             values: []
         };
         //fix dates for timezone issue
+
         var firstDate = user.accountDate;
         var firstDate = new Date(firstDate.setDate(firstDate.getDate() - 2));
         var lastDate = new Date();
@@ -89,6 +90,9 @@ app.factory('apiFactory', function($http) {
     obj.getTransactionData = function() {
        return user.transactions;
    };
+   obj.getUserInfo = function() {
+      return user;
+  };
     //buy coin function that logs transaction
     obj.buyCoin = function(numBuy) {
         var newTransaction = {
@@ -202,6 +206,8 @@ app.factory('apiFactory', function($http) {
             console.log(error);
             return "Issue retrieving historical data";
         });
+
+
     };
     //api request to get user information
     obj.getUser = function () {
@@ -232,4 +238,5 @@ app.factory('apiFactory', function($http) {
       });
     };
     return obj;
+
 });

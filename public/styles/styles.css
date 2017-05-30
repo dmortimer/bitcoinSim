@@ -177,9 +177,14 @@ li a:hover, li a:active, li a:focus{
 /*dashboard */
 .db-page{
   background-color:#eff1f4;
+  width:100%;
+}
+.db-page .row{
+  margin:0 auto;
+  width:100%;
 }
 
-.db_header{
+.pg_header{
   background-color:rgb(50,146,57);
   text-align: center;
   height:70px;
@@ -188,8 +193,7 @@ li a:hover, li a:active, li a:focus{
   margin-top:-25px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.db_card_hd{margin:2%;text-align:left;
-}
+.db_card_hd{text-align:left;}
 .db_card_hd h3{
   font-size:120%;
   font-weight: bold;
@@ -201,11 +205,11 @@ li a:hover, li a:active, li a:focus{
 }
 .dbd_card{
   position: relative;
-  padding: 0 5% 5% 5%;
   margin: 1%;
+
+  padding: 0 2% 2% 2%;
   background: #FFFFFF;
   height:auto;
-  min-height: 200px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .acct_graph{
@@ -223,28 +227,33 @@ li a:hover, li a:active, li a:focus{
 #bcprice{
   text-align:center;
   color:#329239;
+  font-size: 190%;
 }
 #date_posted{
   font-size:70%;
   font-style: italic;
   text-align:right;
 }
-
-
-/*#exchange {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: green;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-  margin-bottom:10px;
-}*/
+table{
+  width:100%;
+}
+th, td {
+    border-collapse: collapse;
+    padding:2%;
+    width:auto;
+}
+th{background-color:#2196f3; color:white;}
+tr:first-child{
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08), 0 5px 5px 0 rgba(0, 0, 0, 0.08);
+}
+tr{
+  border-width: 0 0 1px 0;
+  border-style: inset;
+  border-color: #e8e8e8;
+}
+tr:hover{
+  background-color:#f4f4f4;
+}
 
 
 /*VIEW: Sign In*/
@@ -257,6 +266,7 @@ li a:hover, li a:active, li a:focus{
   width:100%;
   position:relative;
   margin-top: -25px;
+  padding: 5%;
 }
 
 .landing_box{
@@ -298,10 +308,6 @@ li a:hover, li a:active, li a:focus{
 .icon2{background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/exchange.png");}
 .icon3{background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/coins2.png");}
 
-
-/*footer*/
-footer{height:60px;}
-
 .modal_window{
   height:100%;
   width:100%;
@@ -341,13 +347,35 @@ footer{height:60px;}
 .buySellModal form{top:-10%;}
 .buySellModal input{
   width:50%;
+  margin-bottom: 5%;
+  float: right;
 }
 
+.error{
+  color: #bf0808;
+  font-weight: bold;
+  padding: 3%;
+  margin-top: -10%;
+  font-size: 98%;
+  margin-bottom: 0%;
+}
 
+/*Historical Info Page*/
+.historical_hd{
+  background-color: #0d579b;
+}
+
+/*footer*/
+footer{
+  height:60px;
+  z-index: 999;
+  bottom: 0;
+  width: 100%;
+}
 
 /*Media Queries*/
 
-@media screen and (max-width:1200px) and (min-width:300px){
+@media screen and (max-width:1200px) and (min-width:100px){
   .box1{
     border-right:none;
     margin-bottom: 30px;
@@ -360,4 +388,10 @@ footer{height:60px;}
   padding: 10px;
   position: absolute;
   margin-top: -5px;
+}
+@media screen and (max-width:500px) and (min-width:100px){
+  .col-xs-9{
+    width:100%;
+  }
+  .l-icon{margin-left:40%;}
 }
