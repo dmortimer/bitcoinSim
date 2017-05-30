@@ -82,4 +82,5 @@ app.controller('yGraphController', function ($scope, $interval, apiFactory) {
        });
      };
       $scope.getHistoricalData();
+      // console.log(yearlyPrices);
 });
