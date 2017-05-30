@@ -364,6 +364,10 @@ tr:hover{
 .historical_hd{
   background-color: #0d579b;
 }
+.historical {
+  text-align: center;
+}
+
 
 /*footer*/
 footer{
