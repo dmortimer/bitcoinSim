@@ -1,5 +1,16 @@
-
-  <td>{{transaction.displayDate}}</td>
-  <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
-  <td>{{transaction.numCoins}} BTC</td>
-  <td>${{(transaction.cash).toFixed(2)}} USD</td>
+<h3>Transaction History</h3><hr>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Transaction</th>
+    <th>Balance (BTC)</th>
+    <th>Balance (USD)</th>
+  </tr>
+    <!-- <tr ng-repeat="transaction in transactions | orderBy:'-'| limitTo:5"> -->
+    <tr ng-repeat="transaction in transactions | orderBy:'-'| limitTo:5">
+      <td>{{transaction.displayDate}}</td>
+      <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
+      <td>{{transaction.numCoins}} BTC</td>
+      <td>${{(transaction.cash).toFixed(2)}} USD</td>
+    </tr>
+</table>

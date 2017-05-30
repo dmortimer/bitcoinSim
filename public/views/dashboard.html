@@ -30,23 +30,10 @@
         <button class="b-btn col-lg-11" ng-click="buyModal=true">Buy</button>
       </div>
     </div>
-    <div id="trn-tbl"class="dbd_card col-lg-7 col-md-6 col-sm-11 col-xs-11">
-      <h3>Transaction History</h3><hr>
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Transaction</th>
-          <th>Balance (BTC)</th>
-          <th>Balance (USD)</th>
-        </tr>
-          <tr ng-repeat="transaction in transactions | orderBy:'-'">
-            <!-- <td>{{transaction.displayDate}}</td>
-            <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
-            <td>{{transaction.numCoins}} BTC</td>
-            <td>${{(transaction.cash).toFixed(2)}} USD</td> -->
-            <hello></hello>
-          </tr>
-      </table>
+
+    <div class="dbd_card col-lg-7 col-md-6 col-sm-11 col-xs-11">
+      <hello></hello>
+      <div class="glyphicon glyphicon-chevron-down" ng-click=""></div>
     </div>
   </div>
 </div>
@@ -60,7 +47,8 @@
         <div class="row">
           <div class="col-xs-3">{{"Total"}}<br>{{numBuy * currentPrice|currency}}</div>
           <input class="col-xs-8"  name="numBuy" ng-model="numBuy" type="number" placeholder="0" required="required" min="0" max="{{assets[0]/ currentPrice}}" ng-max="{{assets[0]/ currentPrice}}" step="0.0001" autofocus/>
-        </div>         <p class="message">Max ฿ {{assets[1] | number:3}}</p><br>
+        </div>
+        <p class="message">Max ฿ {{assets[1] | number:3}}</p><br>
         <div class="error" role="alert">
           <span ng-show="buyForm.numBuy.$error.max">
             Exceeds {{assets[0] | currency}} in your account</span>

@@ -339,6 +339,12 @@ tr:hover{
   display:block;
   clear:both;
 }
+.glyphicon-chevron-down{
+  color: #2196f3;
+  font-size: 180%;
+  text-align: center;
+  margin-left: 45%;
+}
 .glyphicon:hover{color:#329239;}
 
 .buySellModal input, .buySellModal .message{
