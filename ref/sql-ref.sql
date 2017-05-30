@@ -2511,6 +2511,7 @@ INSERT INTO coinData (price_date, price) VALUES('2017-05-25', 2357.5038);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-26', 2247.4825);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-27', 2106.3075);
 INSERT INTO coinData (price_date, price) VALUES('2017-05-28', 2207.5775);
+INSERT INTO coinData (price_date, price) VALUES('2017-05-29', 2289.87);
 
 DROP TABLE userData;
 
