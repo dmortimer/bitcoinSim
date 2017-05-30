@@ -23,7 +23,6 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
     $scope.buyModal=false;
   }
     else {
-      alert ('Insufficient Funds');
       return $scope.assets;
     }
   };
@@ -33,13 +32,11 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       $scope.sellModal=false;
     }
     else {
-      alert ('There is only ฿ ' + $scope.assets[1] + '.00 coins in your wallet');
       return $scope.assets;
     }
   };
   $scope.transactions = apiFactory.getTransactionData();
   $scope.date= new Date();
   $scope.user = apiFactory.getUserInfo();
-
 
 });

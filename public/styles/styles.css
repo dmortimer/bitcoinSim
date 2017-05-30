@@ -212,7 +212,6 @@ li a:hover, li a:active, li a:focus{
   height:auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
 .acct_graph{
   width:95%;
   height:200px;
@@ -235,6 +234,27 @@ li a:hover, li a:active, li a:focus{
   font-style: italic;
   text-align:right;
 }
+table{
+  width:100%;
+}
+th, td {
+    border-collapse: collapse;
+    padding:2%;
+    width:auto;
+}
+th{background-color:#2196f3; color:white;}
+tr:first-child{
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08), 0 5px 5px 0 rgba(0, 0, 0, 0.08);
+}
+tr{
+  border-width: 0 0 1px 0;
+  border-style: inset;
+  border-color: #e8e8e8;
+}
+tr:hover{
+  background-color:#f4f4f4;
+}
+
 
 /*VIEW: Sign In*/
 .banner{
@@ -288,15 +308,6 @@ li a:hover, li a:active, li a:focus{
 .icon2{background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/exchange.png");}
 .icon3{background-image:url("https://www.buybitcoinworldwide.com/img/goodicons/coins2.png");}
 
-
-/*footer*/
-footer{
-  height:60px;
-  z-index: 999;
-  bottom: 0;
-  width: 100%;
-}
-
 .modal_window{
   height:100%;
   width:100%;
@@ -338,6 +349,28 @@ footer{
   width:50%;
   margin-bottom: 5%;
   float: right;
+}
+
+.error{
+  color: #bf0808;
+  font-weight: bold;
+  padding: 3%;
+  margin-top: -10%;
+  font-size: 98%;
+  margin-bottom: 0%;
+}
+
+/*Historical Info Page*/
+.historical_hd{
+  background-color: #0d579b;
+}
+
+/*footer*/
+footer{
+  height:60px;
+  z-index: 999;
+  bottom: 0;
+  width: 100%;
 }
 
 /*Media Queries*/
