@@ -7,10 +7,6 @@
     </div>
   </div>
 </form>
-<<<<<<< HEAD
-
-=======
->>>>>>> d5d21d7d97e100d370be664e42b8c09ec57f6572
 <table>
   <tr>
     <th>
@@ -42,17 +38,9 @@
       </a>
     </th>
   </tr>
-<<<<<<< HEAD
-  <tr ng-repeat="transaction in transactions | orderBy:sortType:sortReverse | limitTo:7| filter:search">
-=======
-  <tr ng-repeat="transaction in transactions | orderBy:'-' | limitTo:7| filter:search ">
->>>>>>> d5d21d7d97e100d370be664e42b8c09ec57f6572
+  <tr ng-repeat="transaction in transactions | orderBy:sortType:sortReverse | filter:search | orderBy:'-'">
     <td>{{transaction.displayDate}}</td>
     <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
     <td>{{transaction.numCoins}} BTC</td>      <td>${{(transaction.cash).toFixed(2)}} USD</td>
   </tr>
 </table>
-<<<<<<< HEAD
-<!-- <div class="glyphicon glyphicon-chevron-down"></div> -->
-=======
->>>>>>> d5d21d7d97e100d370be664e42b8c09ec57f6572

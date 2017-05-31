@@ -37,7 +37,7 @@ nav{
     font-family: 'Source Sans Pro', sans-serif;
     color:white;
     display:inline-block;
-    position:relative;
+    position:fixed;
     font-weight: bold;
     z-index: 1;
     margin: 0 1% 1% 2%;
@@ -65,6 +65,7 @@ li a {
 }
 
 form {text-align: center;}
+
 
 /*Log In*/
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -108,8 +109,10 @@ form {text-align: center;}
 }
 .s-btn{
   background: #329239;
+  width:48%;
+  margin-right:1%;
 }
-.b-btn{}
+.b-btn{width:48%;margin-left:1%;}
 
 button:hover, .lrn-link:hover{
   font-size: 15px;
@@ -176,7 +179,6 @@ li a:hover, li a:active, li a:focus{
 .db-page{
   background-color:#eff1f4;
   width:100%;
-  text-align:center;
 }
 .db-page .row{
   margin:0 auto;
@@ -204,23 +206,16 @@ li a:hover, li a:active, li a:focus{
 }
 .dbd_card{
   position: relative;
-  margin: 1% auto;
-  padding: 0 2% 2% 2%;
+  margin: 2%;
+
+  padding: 2%;
   background: #FFFFFF;
   height:auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
-.db-page .dbd_card{
-  margin-left: 3%;
+.pad5 {
+    padding: 5%;
 }
-
-.jointCard .dbd_card{
-  padding: 5%;
-  margin: 7% -1% 10% 6%;
-  height: auto;
-}
-
 .acct_graph{
   width:95%;
   height:200px;
@@ -263,16 +258,7 @@ tr{
 tr:hover{
   background-color:#f4f4f4;
 }
-table a{
-  color:white;
-  padding-right: 1%;
-}
-table a:hover, table .glyphicon:hover{
-  color: #333;
-  text-decoration: none;
-  font-size: 101%;
-  cursor: context-menu;
-}
+
 
 /*VIEW: Sign In*/
 .banner{
@@ -353,12 +339,6 @@ table a:hover, table .glyphicon:hover{
   display:block;
   clear:both;
 }
-.glyphicon-chevron-down{
-  color: #2196f3;
-  font-size: 180%;
-  text-align: center;
-  margin-left: 45%;
-}
 .glyphicon:hover{color:#329239;}
 
 .buySellModal input, .buySellModal .message{
@@ -391,7 +371,9 @@ table a:hover, table .glyphicon:hover{
 .historical {
   text-align: center;
 }
-
+#myModal {
+    height:300px;
+}
 
 /*footer*/
 footer{
@@ -422,12 +404,4 @@ footer{
     width:100%;
   }
   .l-icon{margin-left:40%;}
-}
-
-@media screen and (max-width:685px){
-  .jointCard .dbd_card {
-    padding: 5%;
-    margin: 1% 2% 3% 1%;
-    height: auto;
-  }
 }
