@@ -10,9 +10,9 @@ body {
 }
 .logo {
   text-align: center;
-  height: 124px;
-  width: 140px;
-  padding: 10px;
+  height: 15px;
+  width: 15px;
+  /*padding: 10px;*/
 }
 /*Dashboard*/
 h2 {
@@ -30,8 +30,8 @@ nav{
     background-color: black;
 }
 .xs-logo img{
-  max-height: 50px;
-  max-width: 50px;
+  max-height: 10px;
+  max-width: 10px;
 }
 .xs-logo{
     font-family: 'Source Sans Pro', sans-serif;
@@ -41,7 +41,7 @@ nav{
     z-index: 1;
     margin: 0 1% 1% 2%;
     background-color:#333;
-    height: 40px;
+    height: auto;
 }
 
 ul, footer {
