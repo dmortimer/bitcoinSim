@@ -40,26 +40,11 @@
             </div>
         </div>
         <!--Table 2 Transaction History ################# -->
-        <!-- <div id="trn-tbl" class="dbd_card col-lg-4 col-sm-7 col-md-7 col-sm-7 col-xs-12">
-            <h3>Transaction History</h3>
-            <hr>
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Transaction</th>
-                    <th>Balance (BTC)</th>
-                    <th>Balance (USD)</th>
-                </tr>
-                <tr class="transaction" ng-repeat="transaction in transactions | orderBy:'-' | limitTo:8">
-                    <td>{{transaction.displayDate}}</td>
-                    <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
-                    <td>{{transaction.numCoins}} BTC</td>
-                    <td>${{(transaction.cash).toFixed(2)}} USD</td>
-                </tr>
-            </table>
-        </div> -->
         <div class="dbd_card col-lg-4 col-md-8 col-sm-11 col-xs-11">
             <transxn:table></transxn:table>
+            <div class="row">
+                <button class="b-btn col-lg-5 col-md-12" ng-click="transxnModal=true">See all transactions</button>
+            </div>
         </div>
     </div>
     <div class="modal_window" ng-show="buyModal">
@@ -102,4 +87,16 @@
             </form>
         </div>
     </div>
+
+
+    <div class="modal_window" ng-show="transxnModal">
+        <div class="modal_body"  id="myModal">
+            <div class="glyphicon glyphicon-remove" ng-click="transxnModal=false; numSell=null"></div>
+            <div class="modal-content">
+                <transxn:table:all></transxn:table:all>
+
+            </div>
+        </div>
+    </div>
+
 </div>
