@@ -36,8 +36,7 @@ nav{
 .xs-logo{
     font-family: 'Source Sans Pro', sans-serif;
     color:white;
-    display:inline-block;
-    position:fixed;
+    /*display:inline-block;*/
     font-weight: bold;
     z-index: 1;
     margin: 0 1% 1% 2%;
