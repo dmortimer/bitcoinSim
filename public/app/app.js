@@ -8,5 +8,4 @@ app.directive('transxnTable', function() {
     replace: false,
     templateUrl:'views/trxnTable.html'
   }
-
 })

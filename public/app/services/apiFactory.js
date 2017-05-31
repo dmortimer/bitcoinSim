@@ -51,7 +51,7 @@ app.factory('apiFactory', function($http) {
                       tempArray.splice(tempArray.indexOf(tempObj), 1);
                 }
               //now that all of the transactions for this date are in the tempHolder array, find the last one in the array and push the cash amount to the personal history cash array. What we're doing here is getting the information from the last transaction of the day and ignoring all earlier transactions for that day
-              user.personalHistory.cash.push(tempHolder[tempHolder.length - 1].cash);
+              user.personalHistory.cash.paush(tempHolder[tempHolder.length - 1].cash);
           } else {
             //if there wasn't a transaction on the date in question, just grab the cash value from the day before
             user.personalHistory.cash.push(user.personalHistory.cash[user.personalHistory.cash.length - 1]);
@@ -67,7 +67,7 @@ app.factory('apiFactory', function($http) {
               })) {
                 while (tempArray.find(function(object) {
                   tempObj = object;
-                  return user.personalHistory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
+                  return user.personalHisatory.dates[i].getFullYear() === object.date.getFullYear() && user.personalHistory.dates[i].getMonth() === object.date.getMonth() && user.personalHistory.dates[i].getDate() === object.date.getDate();
                     })) {
                       tempHolder.push(tempObj);
                       tempArray.splice(tempArray.indexOf(tempObj), 1);

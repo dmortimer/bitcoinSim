@@ -37,7 +37,7 @@ nav{
     font-family: 'Source Sans Pro', sans-serif;
     color:white;
     display:inline-block;
-    position:fixed;
+    position:relative;
     font-weight: bold;
     z-index: 1;
     margin: 0 1% 1% 2%;

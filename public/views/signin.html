@@ -33,7 +33,7 @@
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="logModal=false"></div>
 
-      <form class="form" ng-submit="">
+      <form class="form" ng-submit="logModal=false">
         <input type="text" placeholder="username" ng-model="user.username" autofocus/>
         <input type="password" placeholder="password" ng-model="user.password"/>
         <button>Login</button>
