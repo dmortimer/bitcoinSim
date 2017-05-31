@@ -6,31 +6,31 @@
         </div>
       </div> -->
         <div class="col-lg-2 col-md-2 col-sm-5 col-xs-12">
-          <div class="dbd_card">
-          <h3>Current Bitcoin Price</h3>
-          <hr>
-          <h1 id="bcprice">$  {{currentPrice | number:2}}</h1>
-          <p id="date_posted">{{ date | date:"MMM d, y h:mm" }}</em>
-          </p>
-          </div>
-          <div class="dbd_card">
-            <h3>Your Account</h3>
-            <hr>
-            <p><strong>Name: </strong>{{user.name}}</p>
-            <p><strong>Username: </strong>{{user.username}}</p>
-            <p><strong>Email: </strong>{{user.email}}</p>
-          </div>
-          <div class="dbd_card">
-            <h3>Your Wallet</h3>
-            <hr>
-            <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
-            <p><strong>Bitcoins: </strong> ฿{{assets[1] |number:4}}</p>
-            <p><strong>Net Worth: </strong> ${{ (assets[1] * currentPrice) + assets[0] | number:4}}</p>
-            <div class="row">
-                <button class="s-btn col-lg-5 col-md-12" ng-click="sellModal=true">Sell</button>
-                <button class="b-btn col-lg-5 col-md-12" ng-click="buyModal=true">Buy</button>
+            <div class="dbd_card pad5">
+                <h3>Current Bitcoin Price</h3>
+                <hr>
+                <h1 id="bcprice">$  {{currentPrice | number:2}}</h1>
+                <p id="date_posted">{{ date | date:"MMM d, y h:mm" }}</em>
+                </p>
             </div>
-          </div>
+            <div class="dbd_card pad5">
+                <h3>Your Account</h3>
+                <hr>
+                <p><strong>Name: </strong>{{user.name}}</p>
+                <p><strong>Username: </strong>{{user.username}}</p>
+                <p><strong>Email: </strong>{{user.email}}</p>
+            </div>
+            <div class="dbd_card pad5">
+                <h3>Your Wallet</h3>
+                <hr>
+                <p><strong>USD Available: </strong>{{assets[0] |currency}}</p>
+                <p><strong>Bitcoins: </strong> ฿{{assets[1] |number:4}}</p>
+                <p><strong>Net Worth: </strong> ${{ (assets[1] * currentPrice) + assets[0] | number:4}}</p>
+                <div class="row">
+                    <button class="s-btn col-lg-5 col-md-12" ng-click="sellModal=true">Sell</button>
+                    <button class="b-btn col-lg-5 col-md-12" ng-click="buyModal=true">Buy</button>
+                </div>
+            </div>
         </div>
         <div class="dbd_card col-lg-5 col-md-9 col-sm-9 col-xs-12 " id="dbd_acct">
             <h3>Account Activity</h3>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <!--Table 2 Transaction History ################# -->
-        <div id="trn-tbl" class="dbd_card col-lg-4 col-sm-7 col-md-7 col-sm-7 col-xs-12">
+        <!-- <div id="trn-tbl" class="dbd_card col-lg-4 col-sm-7 col-md-7 col-sm-7 col-xs-12">
             <h3>Transaction History</h3>
             <hr>
             <table>
@@ -57,6 +57,9 @@
                     <td>${{(transaction.cash).toFixed(2)}} USD</td>
                 </tr>
             </table>
+        </div> -->
+        <div class="dbd_card col-lg-4 col-md-8 col-sm-11 col-xs-11">
+            <transxn:table></transxn:table>
         </div>
     </div>
     <div class="modal_window" ng-show="buyModal">
