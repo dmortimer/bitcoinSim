@@ -1,7 +1,7 @@
 var app = angular.module('coinMod', ["ui.router", "ui.bootstrap"]);
 
 
-app.directive('hello', function() {
+app.directive('transxnTable', function() {
 
   return {
     restrict: 'E',
