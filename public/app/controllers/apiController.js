@@ -32,9 +32,16 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
       return $scope.assets;
     }
   };
-  apiFactory.getUser().then(function () {
-    $scope.getCurrentAssets();
-    $scope.transactions = apiFactory.getTransactionData();
-    $scope.user = apiFactory.getUserInfo();
-  });
+  // var userInfo = ['testuser', '12345'];
+  $scope.populateUser = function (userInfo) {
+    apiFactory.getUser(userInfo).then(function (response) {
+      if (response) {
+        $scope.getCurrentAssets();
+        $scope.transactions = apiFactory.getTransactionData();
+        $scope.user = apiFactory.getUserInfo();
+      } else {
+        alert('nope');
+      }
+    });
+  };
 });
