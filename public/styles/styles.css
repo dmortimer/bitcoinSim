@@ -27,6 +27,7 @@ h2 {
 /*Nav Bar*/
 nav{
     position:relative;
+    background-color: black;
 }
 .xs-logo img{
   max-height: 50px;
@@ -364,6 +365,10 @@ tr:hover{
 .historical_hd{
   background-color: #0d579b;
 }
+.historical {
+  text-align: center;
+}
+
 
 /*footer*/
 footer{

@@ -8,7 +8,7 @@
 
   <div class="log-box col-md-6 row col-xs-12">
     <div class="row">
-      <h2><strong><a href="" ng-click="logModal=true" >Log-in</a> or <a href="#">Sign-up</a></strong></h2><br>
+      <h2><strong><a href="" ng-click="logModal=true" >Log-in</a> or <a href=""  ng-click="regModal=true">Sign-up</a></strong></h2><br>
       <h4>Experience a simulation with your own <span>Bitcoins</span></h4>
     </div>
 
@@ -36,9 +36,24 @@
       <form class="form" ng-submit="">
         <input type="text" placeholder="username" ng-model="user.username" autofocus/>
         <input type="password" placeholder="password" ng-model="user.password"/>
+        <button>Login</button>
+        <p class="message">Not registered? <a href="">Create an account</a></p>
+      </form>
+
+    </div>
+  </div>
+<!-- End Modal Window -->
+<!-- Create Account Modal Window -->
+<div class="modal_window" ng-show="regModal">
+    <div class="modal_body">
+      <div class="glyphicon glyphicon-remove" ng-click="regModal=false"></div>
+
+      <form class="form" ng-submit="">
+        <input type="text" placeholder="username" ng-model="user.username" autofocus/>
+        <input type="password" placeholder="password" ng-model="user.password"/>
         <input type="text" placeholder="email address"  ng-model="user.email"/>
         <button>create</button>
-        <p class="message">Not registered? <a href="#">Create an account</a></p>
+        <p class="message">Already have an account? <a href="">Log in</a></p>
       </form>
 
     </div>

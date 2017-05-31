@@ -50,29 +50,3 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
           //sets application to default to signin page on load or any invalid route
           $urlRouterProvider.otherwise('signin');
 });
-
-
-
-
-
-
-
-
-
-
-// app.config(function($routeProvider){
-//
-//   $routeProvider.when("/",{
-//     templateUrl: 'views/dashboard.html',
-//     controller: 'apiController'
-//   })
-//   .when("/info",{
-//     templateUrl: 'views/info.html',
-//     controller: 'hgraphController'
-//   })
-//   .when("/signin",{
-//     templateUrl: 'views/signin.html',
-//     controller: 'apiController'
-//   });
-//
-// });
