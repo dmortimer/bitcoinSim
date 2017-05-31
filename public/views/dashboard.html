@@ -34,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div class="dbd_card col-lg-6 col-md-9 col-sm-9 col-xs-12 " id="dbd_acct">
+        <div class="dbd_card col-lg-5 col-md-9 col-sm-9 col-xs-12 " id="dbd_acct">
             <h3>Account Activity</h3>
             <hr>
             <div ng-controller="usergraphController">
@@ -43,7 +43,7 @@
         </div>
 
         <!--Table 2 Transaction History ################# -->
-        <div id="trn-tbl" class="dbd_card col-lg-3 col-sm-7 col-md-7 col-sm-7 col-xs-12">
+        <div id="trn-tbl" class="dbd_card col-lg-4 col-sm-7 col-md-7 col-sm-7 col-xs-12">
             <h3>Transaction History</h3>
             <hr>
             <table>
@@ -53,7 +53,7 @@
                     <th>Balance (BTC)</th>
                     <th>Balance (USD)</th>
                 </tr>
-                <tr ng-repeat="transaction in transactions | orderBy:'-' | limitTo:8">
+                <tr class="transaction" ng-repeat="transaction in transactions | orderBy:'-' | limitTo:8">
                     <td>{{transaction.displayDate}}</td>
                     <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
                     <td>{{transaction.numCoins}} BTC</td>

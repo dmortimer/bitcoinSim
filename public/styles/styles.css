@@ -399,3 +399,7 @@ footer{
   }
   .l-icon{margin-left:40%;}
 }
+
+.transaction {
+  width: auto;
+}
