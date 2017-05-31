@@ -27,6 +27,7 @@ h2 {
 /*Nav Bar*/
 nav{
     position:relative;
+    background-color: black;
 }
 .xs-logo img{
   max-height: 50px;
