@@ -109,7 +109,7 @@ app.factory('apiFactory', function($http) {
         //put request to update user data in server when transaction is made
         $http({
           method: 'PUT',
-          url: '/api/user',
+          url: '/api/user/' + user.username,
           data: user
         }).then(function (response) {
           console.log('Database updated for new transaction');
@@ -133,7 +133,7 @@ app.factory('apiFactory', function($http) {
         user.populateAssets();
         $http({
           method: 'PUT',
-          url: '/api/user',
+          url: '/api/user/' + user.username,
           data: user
         }).then(function (response) {
           console.log('Database updated for new transaction');
