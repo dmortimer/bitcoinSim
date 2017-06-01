@@ -30,9 +30,9 @@
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="logModal=false"></div>
       <form class="form" ng-submit="">
-        <input type="text" placeholder="username" ng-model="user.username" autofocus/>
-        <input type="password" placeholder="password" ng-model="user.password"/>
-        <button ng-click="populateUser([user.username, user.password])">Login</button>
+        <input type="text" placeholder="username" ng-model="login.username" autofocus/>
+        <input type="password" placeholder="password" ng-model="login.password"/>
+        <button ng-click="populateUser([login.username, login.password])">Login</button>
         <p class="message">Not registered? <a href="">Create an account</a></p>
       </form>
     </div>

@@ -1,6 +1,6 @@
 var app = angular.module('coinMod');
 
-app.controller('apiController', function ($scope, $interval, apiFactory) {
+app.controller('apiController', function ($scope, $interval, $location, apiFactory) {
   $scope.getCurrentPrice = function () {
     apiFactory.getCurrentPrice().then(function (response) {
       $scope.currentPrice = response;
@@ -39,6 +39,9 @@ app.controller('apiController', function ($scope, $interval, apiFactory) {
         $scope.getCurrentAssets();
         $scope.transactions = apiFactory.getTransactionData();
         $scope.user = apiFactory.getUserInfo();
+        $location.path("dashboard");
+        $scope.login.username = null;
+        $scope.login.password = null;
       } else {
         alert('nope');
       }

@@ -385,7 +385,9 @@ table a:hover, table .glyphicon:hover{
 .historical {
   text-align: center;
 }
-
+#myModal {
+    height:300px;
+}
 
 /*footer*/
 footer{

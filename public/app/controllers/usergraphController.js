@@ -44,5 +44,4 @@ app.controller('usergraphController', function($scope, $interval, apiFactory) {
         });
     });
 
-
 });
