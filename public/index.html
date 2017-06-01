@@ -3,12 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Bitcoin App</title>
+    <title>bitPlz</title>
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" type="image/png" href="images/bitcoinlogo.png"/>
 </head>
   <body ng-controller="apiController">
 
@@ -16,8 +17,8 @@
 <span id="large-menu">
   <nav class="navbar row">
       <ul class="col-lg-12">
-            <h2 class="xs-logo col-lg-4">bitPlz<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h2>
-        <li><a>USD | BTC ฿ {{currentPrice | number:4}}</a></li>
+            <li id="navLogo"><h2>bitPlz</h2><img id="navImg" src="images/bitcoinlogo.png" alt="bitcoinlogo"></li>
+        <li>USD | BTC ฿ {{currentPrice | number:4}}</li>
         <li><a ui-sref="dashboard({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Dashboard</a></li>
         <li><a ui-sref="info({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Historical Data</a></li>
         <li><a ui-sref="signin({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Home</a></li>

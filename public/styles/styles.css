@@ -1,6 +1,12 @@
 body {
   background: white; /* fallback for old browsers */
 }
+#navLogo {
+  float: left;
+}
+#navImg {
+  max-width: 40px;
+}
 .header{
   font-size: 110px;
   text-align: center;
@@ -468,16 +474,16 @@ footer{
   }
   .l-icon{margin-left:40%;}
 }
-@media screen and (max-width:601px) and (min-width:50px){
-    #large-menu{
+/*@media screen and (max-width:601px) and (min-width:50px){
+    /*#large-menu{
       display:none;
-    }
-}
-@media screen and (max-width:3000px) and (min-width:600px){
+    }*/
+}*/
+/*@media screen and (max-width:3000px) and (min-width:600px){
   #mobile-nav{
   display: none;
   }
-}
+}*/
 /*Mobile NavBar*/
 #mobile-nav{
   max-height:55px;
