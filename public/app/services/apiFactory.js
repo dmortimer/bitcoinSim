@@ -146,7 +146,7 @@ app.factory('apiFactory', function($http) {
     obj.getCurrentPrice = function() {
         return $http({
             method: 'GET',
-            url: 'http://api.coindesk.com/v1/bpi/currentprice.json'
+            url: 'https://api.coindesk.com/v1/bpi/currentprice.json'
         }).then(function(response) {
           //convert the price string to a javascript number
             currPrice = parseFloat(response.data.bpi.USD.rate.replace(',', ''));
