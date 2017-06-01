@@ -5,13 +5,11 @@
     <p><span>Bitcoin</span> is a cryptocurrency and a digital payment system released as open-source software in 2009. <span>Bitcoin</span> is a peer-to-peer system where transactions take place between users directly, without an intermediary. Since the system works without a central repository or single administrator, bitcoin is called the first decentralized digital currency.</p>
     <a href="https://en.wikipedia.org/wiki/Bitcoin"><div class="lrn-link">Learn More</div></a>
   </div>
-
   <div class="log-box col-md-6 row col-xs-12">
     <div class="row">
       <h2><strong><a href="" ng-click="logModal=true" >Log-in</a> or <a href=""  ng-click="regModal=true">Sign-up</a></strong></h2><br>
       <h4>Experience a simulation with your own <span>Bitcoins</span></h4>
     </div>
-
       <div class="log-row row">
         <div class="l-icon icon1 col-lg-3 col-xs-12"></div>
         <div class="col-xs-9"><h4>Manage your own <span>Bitcoin</span> Wallet</h4></div>
@@ -22,40 +20,42 @@
       </div>
       <div class="log-row row">
         <div class="l-icon icon3 col-lg-3 col-xs-12"></div>
-        <div class="col-xs-9"><h4>Compare BTC values in real time<h4></div>
+        <div class="col-xs-9"><h4>Compare <span>BTC</span> values in real time<h4></div>
       </div>
     </div>
 </div>
 </div>
 
-<!-- Sign-In Modal Window -->
 <div class="modal_window" ng-show="logModal">
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="logModal=false"></div>
-
-      <form class="form" ng-submit="">
-        <input type="text" placeholder="username" ng-model="login.username" autofocus/>
+      <form name="loginForm" class="form" ng-submit="">
+          <p id="headline">Sign In<p>
+        <input type="text" placeholder="username" name="username" ng-model="login.username" autofocus/>
         <input type="password" placeholder="password" ng-model="login.password"/>
+        <span class="error" role="alert" ng-show="loginError">
+          Incorrect username and/or password<br>
+        </span>
         <button ng-click="populateUser([login.username, login.password])">Login</button>
-        <p class="message">Not registered? <a href="">Create an account</a></p>
+        <p class="message">Not registered? <a ng-click="logModal=false; regModal=true">Create an account</a></p>
       </form>
-
     </div>
   </div>
-<!-- End Modal Window -->
-<!-- Create Account Modal Window -->
+
 <div class="modal_window" ng-show="regModal">
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="regModal=false"></div>
-
-      <form class="form" ng-submit="">
-        <input type="text" placeholder="username" ng-model="user.username" autofocus/>
-        <input type="password" placeholder="password" ng-model="user.password"/>
-        <input type="text" placeholder="email address"  ng-model="user.email"/>
-        <button>create</button>
-        <p class="message">Already have an account? <a href="">Log in</a></p>
+      <form class="form" ng-submit="regModal=false">
+          <p id="headline">Create an account<p>
+        <input type="text" placeholder="username" ng-minlength="5" ng-model="sign.username" required autofocus/>
+        <input type="password" placeholder="password" ng-minlength="5" ng-model="sign.password" required/>
+        <input type="text" placeholder="full name" ng-minlength="1" ng-model="sign.name" required/>
+        <input type="email" placeholder="email address" ng-minlength="5" ng-model="sign.email" required/>
+        <button ng-click="signup([sign.username, sign.password, sign.name, sign.email])">create</button>
+        <span class="error" role="alert" ng-show="signUpError">
+          Issue creating account, try again<br>
+        </span>
+        <p class="message">Already have an account? <a ng-click="regModal=false; logModal=true">Log in</a></p>
       </form>
-
     </div>
   </div>
-<!-- End Modal Window -->

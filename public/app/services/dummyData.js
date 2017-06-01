@@ -138,3 +138,25 @@ var multiplePerDay = [{
       }
     ]
 }];
+
+var newUser = {
+    username: undefined,
+    password: undefined,
+    name: undefined,
+    email: undefined,
+    startingCash: 30000,
+    startingCoins: 0,
+    assets: [],
+    accountDate: undefined,
+    transactions: [
+      {
+        date: undefined,
+        displayDate: undefined,
+        coinChange: 0,
+        numCoins: 0,
+        type: 'Account Created',
+        price: undefined,
+        cash: 30000
+      }
+    ]
+};

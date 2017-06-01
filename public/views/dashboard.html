@@ -1,11 +1,7 @@
 <div class="db-page">
-    <div class="row db_card_hd">
-        <!-- <div class="dbd_card col-lg-2 col-md-2 col-sm-2 col-xs-12 "><h3>Transaction History</h3><hr>
-      <div ng-repeat="transaction in transactions | orderBy:'-'">
-        <span>{{transaction.displayDate}} <br> {{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC <br> Balance: {{transaction.numCoins}} BTC | ${{(transaction.cash).toFixed(2)}} USD<hr></span>
-        </div>
-      </div> -->
-        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+
+    <div class="row row-eq-height db_card_hd">
+        <div class="column1 col-lg-2 col-md-2 col-sm-12 col-xs-12">
             <div class="dbd_card pad5">
                 <h3>Current Bitcoin Price</h3>
                 <hr>
@@ -32,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="dbd_card col-lg-5 col-md-11 col-sm-11 col-xs-11 " id="dbd_acct">
+        <div class="dbd_card col-lg-5 col-md-9 col-sm-11 col-xs-11" id="dbd_acct">
             <h3>Account Activity</h3>
             <hr>
             <div ng-controller="usergraphController">
@@ -43,7 +39,7 @@
         <div class="dbd_card col-lg-4 col-md-8 col-sm-11 col-xs-11">
             <transxn:table></transxn:table>
             <div class="row">
-                <button class="b-btn col-lg-5 col-md-12" ng-click="transxnModal=true">See all transactions</button>
+                <button class="b-btn col-lg-5 col-md-12" id="txnBtn" ng-click="transxnModal=true">See all transactions</button>
             </div>
         </div>
     </div>
@@ -59,10 +55,9 @@
                     <input class="col-xs-8" name="numBuy" ng-model="numBuy" type="number" placeholder="0" required="required" min="0" max="{{assets[0]/ currentPrice}}" ng-max="{{assets[0]/ currentPrice}}" step="0.0001" autofocus/>
                 </div>
                 <p class="message">Max ฿ {{assets[1] | number:3}}</p><br>
-                <div class="error" role="alert">
-                    <span ng-show="buyForm.numBuy.$error.max">
-            Exceeds {{assets[0] | currency}} in your account</span>
-                </div>
+                <span ng-show="buyForm.numBuy.$error.max"class="error" role="alert">
+                  Exceeds {{assets[0] | currency}} in your account
+                </span>
                 <button type="submit">Buy</button>
             </form>
         </div>
@@ -91,10 +86,9 @@
 
     <div class="modal_window" ng-show="transxnModal">
         <div class="modal_body"  id="myModal">
-            <div class="glyphicon glyphicon-remove" ng-click="transxnModal=false; numSell=null"></div>
-            <div class="modal-content">
+            <div class="glyphicon glyphicon-remove" id="txnGlyph" ng-click="transxnModal=false"></div>
+            <div class="modal-content" id="scroll">
                 <transxn:table:all></transxn:table:all>
-
             </div>
         </div>
     </div>

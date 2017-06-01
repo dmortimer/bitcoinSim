@@ -13,6 +13,8 @@ app.use(bodyParser.json())
 app.get('/api/history', function (req, res) {
   pool.query("SELECT * FROM coinData").then(function (result) {
     res.send(result.rows);
+  }).catch(function (error) {
+    res.send(error);
   });
 });
 
@@ -20,7 +22,7 @@ app.get('/api/user', function (req, res) {
   pool.query("SELECT * FROM userData").then(function (result) {
     res.send(result.rows);
   }).catch(function (error) {
-    console.log(error);
+    res.send(error);
   });
 });
 
@@ -31,7 +33,7 @@ app.get('/api/user/:info', function (req, res) {
   pool.query(sql, values).then(function (result) {
     res.send(result.rows);
   }).catch(function (error) {
-    console.log(error);
+    res.send(error);
   });
 });
 
@@ -39,10 +41,26 @@ app.put('/api/user/:user', function (req, res) {
   var sql = "UPDATE userData SET everything=$2::text WHERE uname=$1::text";
   var values = [req.params.user, JSON.stringify(req.body)];
   pool.query(sql, values).then(function () {
-    pool.query("SELECT * FROM userData").then(function (result) {
+    res.send('Updated')
+  }).catch(function (error) {
+    res.send(error);
+  });
+});
+
+app.post('/api/user', function (req, res) {
+  var sql = "INSERT INTO userData (uname, pass, everything) VALUES($1::text, $2::text, $3::text)";
+  values = [req.body.username, req.body.password, JSON.stringify(req.body)];
+  pool.query(sql, values).then(function () {
+    var sql = "SELECT * FROM userData WHERE uname = $1::text and pass = $2::text";
+    var values = [req.body.username, req.body.password];
+    pool.query(sql, values).then(function (result) {
       res.send(result.rows);
+    }).catch(function (error) {
+      res.send(error);
     });
-  }).catch(function () { res.send('Error')});
+  }).catch(function (error) {
+    res.send(error);
+  });
 });
 
 //hosts the server on port 8080 or process.env.PORT
