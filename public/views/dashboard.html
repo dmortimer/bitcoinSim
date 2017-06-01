@@ -54,10 +54,9 @@
                     <input class="col-xs-8" name="numBuy" ng-model="numBuy" type="number" placeholder="0" required="required" min="0" max="{{assets[0]/ currentPrice}}" ng-max="{{assets[0]/ currentPrice}}" step="0.0001" autofocus/>
                 </div>
                 <p class="message">Max ฿ {{assets[1] | number:3}}</p><br>
-                <div class="error" role="alert">
-                    <span ng-show="buyForm.numBuy.$error.max">
-            Exceeds {{assets[0] | currency}} in your account</span>
-                </div>
+                <span ng-show="buyForm.numBuy.$error.max"class="error" role="alert">
+                  Exceeds {{assets[0] | currency}} in your account
+                </span>
                 <button type="submit">Buy</button>
             </form>
         </div>

@@ -29,9 +29,13 @@
 <div class="modal_window" ng-show="logModal">
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="logModal=false"></div>
-      <form class="form" ng-submit="">
-        <input type="text" placeholder="username" ng-model="login.username" autofocus/>
+      <form name="loginForm" class="form" ng-submit="">
+          <p id="headline">Sign In<p>
+        <input type="text" placeholder="username" name="username" ng-model="login.username" autofocus/>
         <input type="password" placeholder="password" ng-model="login.password"/>
+        <span class="error" role="alert" ng-show="loginError">
+          Incorrect username and/or password<br>
+        </span>
         <button ng-click="populateUser([login.username, login.password])">Login</button>
         <p class="message">Not registered? <a ng-click="logModal=false; regModal=true">Create an account</a></p>
       </form>
@@ -42,10 +46,10 @@
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="regModal=false"></div>
       <form class="form" ng-submit="regModal=false">
-
-        <input type="text" placeholder="username" ng-model="user.username" autofocus/>
-        <input type="password" placeholder="password" ng-model="user.password"/>
-        <input type="text" placeholder="email address"  ng-model="user.email"/>
+          <p id="headline">Create an account<p>
+        <input type="text" placeholder="username" ng-minlength="5" ng-model="user.username" required autofocus/>
+        <input type="password" placeholder="password" ng-minlength="5" ng-model="user.password" required/>
+        <input type="email" placeholder="email address" ng-minlength="5" ng-model="user.email" required/>
         <button>create</button>
         <p class="message">Already have an account? <a ng-click="regModal=false; logModal=true">Log in</a></p>
       </form>

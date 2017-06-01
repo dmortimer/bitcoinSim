@@ -43,7 +43,7 @@ app.controller('apiController', function ($scope, $interval, $location, apiFacto
         $scope.login.username = null;
         $scope.login.password = null;
       } else {
-        alert('nope');
+        $scope.loginError = true;
       }
     });
   };
