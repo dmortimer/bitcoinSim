@@ -20,7 +20,12 @@ app.get('/api/history', function (req, res) {
 
 app.get('/api/user', function (req, res) {
   pool.query("SELECT * FROM userData").then(function (result) {
-    res.send(result.rows);
+    var userArray = [];
+    result.rows.forEach(function (item) {
+      item.everything = JSON.parse(item.everything);
+      userArray.push({username: item.uname, coins: item.everything.transactions[item.everything.transactions.length - 1].numCoins, cash: item.everything.transactions[item.everything.transactions.length - 1].cash});
+    })
+    res.send(userArray);
   }).catch(function (error) {
     res.send(error);
   });

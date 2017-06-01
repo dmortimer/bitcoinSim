@@ -294,5 +294,20 @@ app.factory('apiFactory', function($http) {
       });
       return user.assets;
     }
+    obj.getAllUsers = function () {
+      return $http({
+        method: 'GET',
+        url: '/api/user'
+      }).then(function (response) {
+        response.data.forEach(function (item) {
+          item.value = (item.coins * currPrice) + item.cash;
+        });
+        console.log(response.data);
+        return response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    };
+    obj.getAllUsers();
     return obj;
 });
