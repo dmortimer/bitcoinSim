@@ -37,11 +37,11 @@ nav{
     font-family: 'Source Sans Pro', sans-serif;
     color:white;
     display:inline-block;
-    position:relative;
+    position:absolute;
     font-weight: bold;
     z-index: 1;
     margin: 0 1% 1% 2%;
-    background-color:#333;
+    background-color:none;
     height: 40px;
 }
 
@@ -50,7 +50,7 @@ ul, footer {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: black;
     color:white;
 }
 
@@ -448,7 +448,6 @@ footer{
   bottom:0;
 }
 /*Media Queries*/
-
 @media screen and (max-width:1200px) and (min-width:100px){
   .box1{
     border-right:none;
@@ -462,9 +461,54 @@ footer{
   position: absolute;
   margin-top: -5px;
 }
+
 @media screen and (max-width:500px) and (min-width:100px){
   .col-xs-9{
     width:100%;
   }
   .l-icon{margin-left:40%;}
+}
+@media screen and (max-width:601px) and (min-width:50px){
+    #large-menu{
+      display:none;
+    }
+}
+@media screen and (max-width:3000px) and (min-width:600px){
+  #mobile-nav{
+  display: none;
+  }
+}
+/*Mobile NavBar*/
+#mobile-nav{
+  max-height:55px;
+  z-index: 999;
+}
+#mobile_navbar_ul{
+  float: right;
+  width: 30%;
+  overflow: visible;
+  z-index: 995;
+  position: absolute;
+  top: 45px;
+  margin-left: 65%;
+  height: auto;
+  background-color: rgba(0,0,0,1);
+}
+#mobile_navbar_ul li{
+  width:100%;
+}
+#mobile_navbar_ul li a:hover{
+  background-color:#f7931a;
+  color:white;
+}
+#mobile-nav .glyphicon{
+  padding: 5px;
+  max-height: 60px;
+  padding-right: 20px;
+  font-size: 200%;
+}
+#icon-menu{
+  display: inline-block;
+  float: right;
+  color: white;
 }
