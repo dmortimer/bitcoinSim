@@ -6,4 +6,11 @@ app.directive('transxnTable', function() {
     replace: false,
     templateUrl:'views/trxnTable.html'
   }
+});
+app.directive('transxnTableAll', function() {
+  return {
+    restrict: 'E',
+    replace: false,
+    templateUrl:'views/trxnTableAll.html'
+  }
 })
