@@ -12,7 +12,9 @@
 </head>
   <body ng-controller="apiController">
 
-    <nav class="navbar row">
+<!-- LARGE VIEW NAVIGATION -->
+<span id="large-menu">
+  <nav class="navbar row">
       <ul class="col-lg-12">
             <h2 class="xs-logo col-lg-4">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h2>
         <li><a>USD | BTC ฿ {{currentPrice | number:4}}</a></li>
@@ -21,6 +23,29 @@
         <li><a ui-sref="signin({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Sign In</a></li>
       </ul>
     </nav>
+</span>
+<!-- MOBILE VIEW NAVIGATION -->
+<span id="mobile-nav">
+    <nav class="navbar row col-lg-12">
+      <h2 id="mobile-logo" class="xs-logo col-lg-4">Bitcoin<img class="logo" src="images/bitcoinlogo.png" alt="bitcoinlogo"></h2>
+      <div id="icon-menu" class="glyphicon glyphicon-align-justify" ng-click="mobile_navbar=true">
+      </div>
+        <ul class="col-lg-6" id="mobile_navbar_ul" ng-show="mobile_navbar">
+            <li><a>USD | BTC ฿ {{currentPrice | number:4}}</a></li>
+            <li><a ui-sref="dashboard({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Dashboard</a></li>
+            <li><a ui-sref="info({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Historical Data</a></li>
+            <li><a ui-sref="signin({veryLongParamHome:'Home--f8d218ae-d998-4aa4-94ee-f27144a21238'})">Sign In</a></li>
+        </ul>
+      </nav>
+    </span>
+
+
+
+
+
+
+
+
 
       <div ui-view></div>
 
