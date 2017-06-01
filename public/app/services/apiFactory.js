@@ -240,6 +240,59 @@ app.factory('apiFactory', function($http) {
         console.log(error);
       });
     };
+    obj.signup = function (userInfo) {
+      var newUser = {
+          username: userInfo[0],
+          password: userInfo[1],
+          name: userInfo[2],
+          email: userInfo[3],
+          startingCash: 30000,
+          startingCoins: 0,
+          assets: [],
+          accountDate: new Date(),
+          transactions: [
+            {
+              date: new Date(),
+              displayDate: undefined,
+              coinChange: 0,
+              numCoins: 0,
+              type: 'Account Created',
+              price: currPrice,
+              cash: 30000
+            }
+          ]
+      };
+      newUser.transactions[0].displayDate = newUser.transactions[0].date.toISOString().substring(0,10);
+      return $http({
+        method: 'POST',
+        url: '/api/user/',
+        data: newUser
+      }).then(function (response) {
+        if (response.data.length > 0) {
+          user = JSON.parse(response.data[0].everything);
+          //convert stored date unix numbers to javascript date objects for accountDate and transaction dates
+          user.accountDate = new Date(user.accountDate);
+          user.transactions.forEach(function (item) {
+            item.date = new Date(item.date);
+          });
+          //populates assets property based on most recent transaction
+          user.populateAssets = function () {
+            this.assets[0] = this.transactions[this.transactions.length - 1].cash;
+            this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
+          };
+          //populate assets after user information is loaded
+          user.populateAssets();
+          //populate personal history after user information is loaded
+          obj.populatePersonalHistory();
+          console.log(user);
+          return true;
+        } else {
+          return false;
+        }
+      }).catch(function (error) {
+        console.log(error);
+      });
+      return user.assets;
+    }
     return obj;
-
 });

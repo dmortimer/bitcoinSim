@@ -47,10 +47,14 @@
       <div class="glyphicon glyphicon-remove" ng-click="regModal=false"></div>
       <form class="form" ng-submit="regModal=false">
           <p id="headline">Create an account<p>
-        <input type="text" placeholder="username" ng-minlength="5" ng-model="user.username" required autofocus/>
-        <input type="password" placeholder="password" ng-minlength="5" ng-model="user.password" required/>
-        <input type="email" placeholder="email address" ng-minlength="5" ng-model="user.email" required/>
-        <button>create</button>
+        <input type="text" placeholder="username" ng-minlength="5" ng-model="sign.username" required autofocus/>
+        <input type="password" placeholder="password" ng-minlength="5" ng-model="sign.password" required/>
+        <input type="text" placeholder="full name" ng-minlength="1" ng-model="sign.name" required/>
+        <input type="email" placeholder="email address" ng-minlength="5" ng-model="sign.email" required/>
+        <button ng-click="signup([sign.username, sign.password, sign.name, sign.email])">create</button>
+        <span class="error" role="alert" ng-show="signUpError">
+          Issue creating account, try again<br>
+        </span>
         <p class="message">Already have an account? <a ng-click="regModal=false; logModal=true">Log in</a></p>
       </form>
     </div>

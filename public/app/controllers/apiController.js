@@ -47,4 +47,20 @@ app.controller('apiController', function ($scope, $interval, $location, apiFacto
       }
     });
   };
+  $scope.signup = function (userInfo) {
+    apiFactory.signup(userInfo).then(function (response) {
+      if (response) {
+        $scope.getCurrentAssets();
+        $scope.transactions = apiFactory.getTransactionData();
+        $scope.user = apiFactory.getUserInfo();
+        $location.path("dashboard");
+        $scope.sign.username = null;
+        $scope.sign.password = null;
+        $scope.sign.name = null;
+        $scope.sign.email = null;
+      } else {
+        $scope.signUpError = true;
+      }
+    });
+  };
 });
