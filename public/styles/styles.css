@@ -114,6 +114,12 @@ form {text-align: center;}
 }
 .b-btn{width:48%;margin-left:1%;}
 
+.modal_window{
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
 button:hover, .lrn-link:hover{
   font-size: 15px;
   font-weight: bold;
@@ -385,9 +391,48 @@ table a:hover, table .glyphicon:hover{
 .historical {
   text-align: center;
 }
-#myModal {
-    height:300px;
+#txnBtn{
+  padding: 4.5px;
+      width: auto;
+      margin-top: 2.5%;
+      margin-left: calc((80%-width)/2);
+      white-space: nowrap;
+      font-size: 80%;
 }
+
+#myModal {
+  height: 620px;
+  top: -1px;
+  width: 60%;
+  margin-left: 20%;
+}
+.modal-content{
+  padding: 0 5%;
+  height: 580px;
+  overflow-y: scroll;
+  overflow-x:hidden;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+#txnGlyph{
+  top: 10px;
+  width: 110%;
+}
+#myModal h3{text-align:center;}
+#scroll::-webkit-scrollbar-track{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+#scroll::-webkit-scrollbar{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+#scroll::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
 
 /*footer*/
 footer{

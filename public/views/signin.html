@@ -33,7 +33,7 @@
         <input type="text" placeholder="username" ng-model="login.username" autofocus/>
         <input type="password" placeholder="password" ng-model="login.password"/>
         <button ng-click="populateUser([login.username, login.password])">Login</button>
-        <p class="message">Not registered? <a href="">Create an account</a></p>
+        <p class="message">Not registered? <a ng-click="logModal=false; regModal=true">Create an account</a></p>
       </form>
     </div>
   </div>
@@ -41,13 +41,13 @@
 <div class="modal_window" ng-show="regModal">
     <div class="modal_body">
       <div class="glyphicon glyphicon-remove" ng-click="regModal=false"></div>
-
       <form class="form" ng-submit="regModal=false">
+
         <input type="text" placeholder="username" ng-model="user.username" autofocus/>
         <input type="password" placeholder="password" ng-model="user.password"/>
         <input type="text" placeholder="email address"  ng-model="user.email"/>
         <button>create</button>
-        <p class="message">Already have an account? <a href="">Log in</a></p>
+        <p class="message">Already have an account? <a ng-click="regModal=false; logModal=true">Log in</a></p>
       </form>
     </div>
   </div>
