@@ -1,0 +1,46 @@
+<h3>Transaction History</h3><hr>
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+      <input type="text" class="form-control" placeholder="search recent transactions" ng-model="search">
+    </div>
+  </div>
+</form>
+<table>
+  <tr>
+    <th>
+      <a ng-click="sortType ='date'; sortReverse = !sortReverse">
+        Date
+      <span ng-show="sortType == 'date' && !sortReverse" class="glyphicon glyphicon-circle-arrow-down"></span>
+      <span ng-show="sortType == 'date' && sortReverse" class="glyphicon glyphicon-circle-arrow-up"></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="sortType ='name'; sortReverse = !sortReverse">
+        Transaction
+      <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-circle-arrow-down"></span>
+      <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-circle-arrow-up"></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="sortType ='balanceBtc'; sortReverse = !sortReverse">
+        Balance (BTC)
+      <span ng-show="sortType == 'balanceBtc' && !sortReverse" class="glyphicon glyphicon-circle-arrow-down"></span>
+      <span ng-show="sortType == 'balanceBtc' && sortReverse" class="glyphicon glyphicon-circle-arrow-up"></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="sortType ='balanceUsd'; sortReverse = !sortReverse">
+        Balance (USD)
+      <span ng-show="sortType == 'balanceUsd' && !sortReverse" class="glyphicon glyphicon-circle-arrow-down"></span>
+      <span ng-show="sortType == 'balanceUsd' && sortReverse" class="glyphicon glyphicon-circle-arrow-up"></span>
+      </a>
+    </th>
+  </tr>
+  <tr ng-repeat="transaction in transactions | orderBy:sortType:sortReverse | filter:search | orderBy:'-'">
+    <td>{{transaction.displayDate}}</td>
+    <td>{{transaction.type}} {{transaction.coinChange > 0 ? transaction.coinChange : transaction.coinChange * -1}} BTC</td>
+    <td>{{transaction.numCoins}} BTC</td>      <td>${{(transaction.cash).toFixed(2)}} USD</td>
+  </tr>
+</table>

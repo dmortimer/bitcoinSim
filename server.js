@@ -19,13 +19,25 @@ app.get('/api/history', function (req, res) {
 app.get('/api/user', function (req, res) {
   pool.query("SELECT * FROM userData").then(function (result) {
     res.send(result.rows);
+  }).catch(function (error) {
+    console.log(error);
   });
 });
 
-app.put('/api/user', function (req, res) {
-  console.log(JSON.stringify(req.body));
+app.get('/api/user/:info', function (req, res) {
+  var userInfo = req.params.info.split(',');
+  var sql = "SELECT * FROM userData WHERE uname = $1::text and pass = $2::text";
+  var values = userInfo;
+  pool.query(sql, values).then(function (result) {
+    res.send(result.rows);
+  }).catch(function (error) {
+    console.log(error);
+  });
+});
+
+app.put('/api/user/:user', function (req, res) {
   var sql = "UPDATE userData SET everything=$2::text WHERE uname=$1::text";
-  var values = ['testuser', JSON.stringify(req.body)];
+  var values = [req.params.user, JSON.stringify(req.body)];
   pool.query(sql, values).then(function () {
     pool.query("SELECT * FROM userData").then(function (result) {
       res.send(result.rows);

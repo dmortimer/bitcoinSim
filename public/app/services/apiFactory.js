@@ -109,7 +109,7 @@ app.factory('apiFactory', function($http) {
         //put request to update user data in server when transaction is made
         $http({
           method: 'PUT',
-          url: '/api/user',
+          url: '/api/user/' + user.username,
           data: user
         }).then(function (response) {
           console.log('Database updated for new transaction');
@@ -133,7 +133,7 @@ app.factory('apiFactory', function($http) {
         user.populateAssets();
         $http({
           method: 'PUT',
-          url: '/api/user',
+          url: '/api/user/' + user.username,
           data: user
         }).then(function (response) {
           console.log('Database updated for new transaction');
@@ -206,33 +206,36 @@ app.factory('apiFactory', function($http) {
             console.log(error);
             return "Issue retrieving historical data";
         });
-
-
     };
     //api request to get user information
-    obj.getUser = function () {
+    obj.getUser = function (userInfo) {
       return $http({
         method: 'GET',
-        url: '/api/user'
+        url: '/api/user/' + userInfo
       }).then(function (response) {
         //store user data in factory user object
-        user = JSON.parse(response.data[0].everything);
-        //convert stored date unix numbers to javascript date objects for accountDate and transaction dates
-        user.accountDate = new Date(user.accountDate);
-        user.transactions.forEach(function (item) {
-          item.date = new Date(item.date);
-        });
-        //delete personalHistory object from user object so it can be repopulated with new historical data
-        delete user.personalHistory;
-        //populates assets property based on most recent transaction
-        user.populateAssets = function () {
-          this.assets[0] = this.transactions[this.transactions.length - 1].cash;
-          this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
-        };
-        //populate assets after user information is loaded
-        user.populateAssets();
-        //populate personal history after user information is loaded
-        obj.populatePersonalHistory();
+        if (response.data.length > 0) {
+          user = JSON.parse(response.data[0].everything);
+          //convert stored date unix numbers to javascript date objects for accountDate and transaction dates
+          user.accountDate = new Date(user.accountDate);
+          user.transactions.forEach(function (item) {
+            item.date = new Date(item.date);
+          });
+          //delete personalHistory object from user object so it can be repopulated with new historical data
+          delete user.personalHistory;
+          //populates assets property based on most recent transaction
+          user.populateAssets = function () {
+            this.assets[0] = this.transactions[this.transactions.length - 1].cash;
+            this.assets[1] = this.transactions[this.transactions.length - 1].numCoins;
+          };
+          //populate assets after user information is loaded
+          user.populateAssets();
+          //populate personal history after user information is loaded
+          obj.populatePersonalHistory();
+          return true;
+        } else {
+          return false;
+        }
       }).catch(function (error) {
         console.log(error);
       });
